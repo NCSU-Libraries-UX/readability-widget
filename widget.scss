@@ -1,0 +1,86 @@
+/*
+* to compile run this code from the root of this app
+* sass --watch widget.scss:widget.css
+*
+* this file styles the widget content and button
+*/
+
+#readability-widget {
+    #widget-toggle {
+        button {
+            background: #cc0000;
+            border: 0px;
+            color: #FFF;
+            font-family: "UniversRoman";
+            font-size: 1.2rem;
+            font-weight: bold;
+            line-height: 1rem;
+            padding: 13px 10px 10px 10px;
+        }
+    }
+    #widget-content {
+        border: 1px solid #555;
+        font-family: "UniversLight";
+        padding: 20px;
+        max-width: 400px;
+        /* The switch - the box around the slider */
+        label.switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+
+            /* Hide default HTML checkbox */
+            input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+            /* The toggle switch */
+            .toggle-switch {
+                background-color: #ccc;
+                border-radius: 34px;
+                bottom: 0;
+                cursor: pointer;
+                left: 0;
+                position: absolute;
+                right: 0;
+                transition: .4s;
+                top: 0;
+                -webkit-transition: .4s;
+            }
+            .toggle-switch:before {
+                background-color: white;
+                border-radius: 50%;
+                bottom: 4px;
+                content: "";
+                height: 26px;
+                left: 4px;
+                position: absolute;
+                transition: .4s;
+                -webkit-transition: .4s;
+                width: 26px;
+            }
+            input:checked+.toggle-switch {
+                background-color: #2196F3;
+            }
+            input:focus+.toggle-switch {
+                box-shadow: 0 0 1px #2196F3;
+            }
+            input:checked+.toggle-switch:before {
+                -webkit-transform: translateX(26px);
+                -ms-transform: translateX(26px);
+                transform: translateX(26px);
+            }
+        }
+        p {
+            a {
+                color: #cc0000;
+                text-decoration: none;
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
