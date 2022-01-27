@@ -12,69 +12,63 @@
   font-size: 1.2rem;
   font-weight: bold;
   line-height: 1rem;
-  padding: 13px 10px 10px 10px;
-}
+  padding: 13px 10px 10px 10px; }
 #readability-widget #widget-content {
   border: 1px solid #555;
   font-family: "UniversLight";
   padding: 20px;
   max-width: 400px;
-  /* The switch - the box around the slider */
-}
-#readability-widget #widget-content label.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-  /* Hide default HTML checkbox */
-  /* The toggle switch */
-}
-#readability-widget #widget-content label.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-#readability-widget #widget-content label.switch .toggle-switch {
-  background-color: #ccc;
-  border-radius: 34px;
-  bottom: 0;
-  cursor: pointer;
-  left: 0;
-  position: absolute;
-  right: 0;
-  transition: 0.4s;
-  top: 0;
-  -webkit-transition: 0.4s;
-}
-#readability-widget #widget-content label.switch .toggle-switch:before {
-  background-color: white;
-  border-radius: 50%;
-  bottom: 4px;
-  content: "";
-  height: 26px;
-  left: 4px;
-  position: absolute;
-  transition: 0.4s;
-  -webkit-transition: 0.4s;
-  width: 26px;
-}
-#readability-widget #widget-content label.switch input:checked + .toggle-switch {
-  background-color: #2196F3;
-}
-#readability-widget #widget-content label.switch input:focus + .toggle-switch {
-  box-shadow: 0 0 1px #2196F3;
-}
-#readability-widget #widget-content label.switch input:checked + .toggle-switch:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-#readability-widget #widget-content p a {
-  color: #cc0000;
-  text-decoration: none;
-}
-#readability-widget #widget-content p a:hover {
-  text-decoration: underline;
-}
+  /* The switch - the box around the slider */ }
+  #readability-widget #widget-content label.switch {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    height: 34px;
+    /* Move toggle to the right */ }
+    #readability-widget #widget-content label.switch span.switch-toggle-container {
+      position: relative;
+      width: 85px;
+      /* Hide default HTML checkbox */
+      /* The toggle switch */ }
+      #readability-widget #widget-content label.switch span.switch-toggle-container input {
+        opacity: 0;
+        width: 0;
+        height: 0; }
+      #readability-widget #widget-content label.switch span.switch-toggle-container .toggle-switch {
+        background-color: #ccc;
+        border-radius: 34px;
+        bottom: 0;
+        cursor: pointer;
+        left: 0;
+        position: absolute;
+        right: 0;
+        transition: .4s;
+        top: 0;
+        -webkit-transition: .4s; }
+      #readability-widget #widget-content label.switch span.switch-toggle-container .toggle-switch:before {
+        background-color: white;
+        border-radius: 50%;
+        bottom: 4px;
+        content: "";
+        height: 26px;
+        left: 4px;
+        position: absolute;
+        transition: .4s;
+        -webkit-transition: .4s;
+        width: 26px; }
+      #readability-widget #widget-content label.switch span.switch-toggle-container input:checked + .toggle-switch {
+        background-color: #2196F3; }
+      #readability-widget #widget-content label.switch span.switch-toggle-container input:focus + .toggle-switch {
+        box-shadow: 0 0 1px #2196F3; }
+      #readability-widget #widget-content label.switch span.switch-toggle-container input:checked + .toggle-switch:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px); }
+  #readability-widget #widget-content p a {
+    color: #cc0000;
+    text-decoration: none; }
+  #readability-widget #widget-content p a:hover {
+    text-decoration: underline; }
 
 /*# sourceMappingURL=widget.css.map */
