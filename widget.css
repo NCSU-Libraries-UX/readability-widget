@@ -4,71 +4,115 @@
 *
 * this file styles the widget content and button
 */
+#readability-widget {
+  width: 350px;
+}
+@media only screen and (max-width: 500px) {
+  #readability-widget {
+    padding: 5%;
+    width: 90%;
+  }
+}
 #readability-widget #widget-toggle button {
   background: #cc0000;
   border: 0px;
   color: #FFF;
   font-family: "UniversRoman";
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: bold;
-  line-height: 1rem;
-  padding: 13px 10px 10px 10px; }
+  line-height: 1.25;
+  padding: 13px 10px 10px 10px;
+}
 #readability-widget #widget-content {
   border: 1px solid #555;
   font-family: "UniversLight";
+  font-size: 1.25rem;
   padding: 20px;
   max-width: 400px;
-  /* The switch - the box around the slider */ }
-  #readability-widget #widget-content label.switch {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 100%;
-    height: 34px;
-    /* Move toggle to the right */ }
-    #readability-widget #widget-content label.switch span.switch-toggle-container {
-      position: relative;
-      width: 85px;
-      /* Hide default HTML checkbox */
-      /* The toggle switch */ }
-      #readability-widget #widget-content label.switch span.switch-toggle-container input {
-        opacity: 0;
-        width: 0;
-        height: 0; }
-      #readability-widget #widget-content label.switch span.switch-toggle-container .toggle-switch {
-        background-color: #ccc;
-        border-radius: 34px;
-        bottom: 0;
-        cursor: pointer;
-        left: 0;
-        position: absolute;
-        right: 0;
-        transition: .4s;
-        top: 0;
-        -webkit-transition: .4s; }
-      #readability-widget #widget-content label.switch span.switch-toggle-container .toggle-switch:before {
-        background-color: white;
-        border-radius: 50%;
-        bottom: 4px;
-        content: "";
-        height: 26px;
-        left: 4px;
-        position: absolute;
-        transition: .4s;
-        -webkit-transition: .4s;
-        width: 26px; }
-      #readability-widget #widget-content label.switch span.switch-toggle-container input:checked + .toggle-switch {
-        background-color: #2196F3; }
-      #readability-widget #widget-content label.switch span.switch-toggle-container input:focus + .toggle-switch {
-        box-shadow: 0 0 1px #2196F3; }
-      #readability-widget #widget-content label.switch span.switch-toggle-container input:checked + .toggle-switch:before {
-        -webkit-transform: translateX(26px);
-        -ms-transform: translateX(26px);
-        transform: translateX(26px); }
-  #readability-widget #widget-content p a {
-    color: #cc0000;
-    text-decoration: none; }
-  #readability-widget #widget-content p a:hover {
-    text-decoration: underline; }
+  /* The switch - the box around the slider */
+}
+#readability-widget #widget-content *:last-child {
+  margin-bottom: 0px;
+}
+#readability-widget #widget-content label.switch {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  height: 34px;
+  margin-bottom: 10px;
+  position: relative;
+  width: 100%;
+  /* Move toggle to the right */
+  /* Hide default HTML checkbox */
+  /* The toggle switch */
+}
+#readability-widget #widget-content label.switch span.switch-label {
+  line-height: 34px;
+}
+#readability-widget #widget-content label.switch span.switch-toggle-container {
+  justify-self: end;
+  position: relative;
+  width: 60px;
+}
+#readability-widget #widget-content label.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+#readability-widget #widget-content label.switch span.toggle-switch {
+  background-color: #ccc;
+  border-radius: 34px;
+  bottom: 0;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.2s;
+  -webkit-transition: 0.2s;
+}
+#readability-widget #widget-content label.switch span.toggle-switch .label-on {
+  align-self: center;
+  font-size: 0.9rem;
+  text-align: center;
+  z-index: 0;
+}
+#readability-widget #widget-content label.switch span.toggle-switch .label-off {
+  align-self: center;
+  font-size: 0.9rem;
+  text-align: center;
+  z-index: 0;
+}
+#readability-widget #widget-content label.switch span.toggle-switch:before {
+  background-color: white;
+  border-radius: 50%;
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: 0.2s;
+  -webkit-transition: 0.2s;
+  width: 26px;
+}
+#readability-widget #widget-content label.switch input:checked + .toggle-switch {
+  background-color: #2196F3;
+}
+#readability-widget #widget-content label.switch input:focus + .toggle-switch {
+  box-shadow: 0 0 1px #2196F3;
+}
+#readability-widget #widget-content label.switch input:checked + .toggle-switch:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+#readability-widget #widget-content p a {
+  color: #cc0000;
+  text-decoration: none;
+}
+#readability-widget #widget-content p a:hover {
+  text-decoration: underline;
+}
 
 /*# sourceMappingURL=widget.css.map */

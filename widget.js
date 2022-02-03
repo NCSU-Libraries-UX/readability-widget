@@ -4,7 +4,7 @@
 var widget = {
 	init:function(){
 
-		fetch('readability-widget/widget.html').then(function (response) {
+		fetch('widget.html').then(function (response) {
 			// successful API call
 			return response.text();
 		}).then(function (html) {
