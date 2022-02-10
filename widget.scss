@@ -80,6 +80,7 @@
                     font-size: 0.9rem;
                     text-align: center;
                     z-index: 0;
+                    display: none;
                 }
                 .label-off{
                     align-self: center;
@@ -102,6 +103,14 @@
             }
             input:checked+.toggle-switch {
                 background-color: #2196F3;
+
+                .label-off {
+                    display: none;
+                }
+
+                .label-on {
+                    display: block;
+                }
             }
             input:focus+.toggle-switch {
                 box-shadow: 0 0 1px #2196F3;
