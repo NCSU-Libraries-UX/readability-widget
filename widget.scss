@@ -77,15 +77,16 @@
 
                 .label-on{
                     align-self: center;
-                    font-size: 0.9rem;
+                    font-size: 0.75rem;
                     text-align: center;
                     z-index: 0;
-                    display: none;
+                    opacity: 0;
                 }
                 .label-off{
                     align-self: center;
-                    font-size: 0.9rem;
+                    font-size: 0.75rem;
                     text-align: center;
+                    padding-right: 4px;
                     z-index: 0;
                 }
             }
@@ -97,19 +98,19 @@
                 height: 26px;
                 left: 4px;
                 position: absolute;
-                transition: .2s;
-                -webkit-transition: .2s;
+                transition: 0s;
+                -webkit-transition: 0s;
                 width: 26px;
             }
             input:checked+.toggle-switch {
                 background-color: #2196F3;
 
                 .label-off {
-                    display: none;
+                    opacity: 0;
                 }
 
                 .label-on {
-                    display: block;
+                    opacity: 1;
                 }
             }
             input:focus+.toggle-switch {
@@ -122,6 +123,8 @@
             }
         }
         p {
+
+            font-size: 1rem;
             a {
                 color: #cc0000;
                 text-decoration: none;
