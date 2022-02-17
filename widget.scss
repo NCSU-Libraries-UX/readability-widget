@@ -6,6 +6,9 @@
 */
 
 #readability-widget {
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
     width: 350px;
     @media only screen and (max-width: 500px) {
         padding: 5%;
@@ -25,7 +28,13 @@
         }
     }
     #widget-content {
+
+        &.visible{
+            display: block;
+        }
+        background: #ffffff;
         border: 1px solid #555;
+        display: none;
         font-family: "UniversLight";
         font-size: 1.25rem;
         padding: 20px;
