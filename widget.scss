@@ -24,8 +24,35 @@
             font-size: 1.25rem;
             font-weight: bold;
             line-height: 1.25;
-            padding: 13px 10px 10px 10px;
+            padding: 13px 35px 10px 10px;
+            position: relative;
         }
+
+        button.closed::after {
+            width: 0; 
+            height: 0; 
+            position: absolute;
+            top: 18px;
+            right: 9px;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid white;
+            content:"";
+        }
+
+        button.open::after {
+            width: 0; 
+            height: 0; 
+            position: absolute;
+            top: 18px;
+            right: 9px;
+            content:"\274c";
+        }
+
+        button:focus {
+            outline: 3px solid blue;
+        }
+
     }
     #widget-content {
 
@@ -69,6 +96,11 @@
                 width: 0;
                 height: 0;
             }
+
+            input:focus + span.toggle-switch {
+                outline: 3px solid blue;
+            }
+
             /* The toggle switch */
             span.toggle-switch {
                 background-color: #ccc;

@@ -32,6 +32,14 @@ var widget = {
 			}else{
 				widget_content.classList.add("visible");
 			}
+
+			if(e.target.classList.contains("open")) {
+				e.target.classList.remove("open");
+				e.target.classList.add("closed");
+			} else {
+				e.target.classList.remove("closed");
+				e.target.classList.add("open");
+			}
 		});
 	}
 }
