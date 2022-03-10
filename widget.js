@@ -16,6 +16,9 @@ var widget = {
 
 			// once widget has loaded init event listener
 			widget.toggle_widget();
+
+			// enable event listeners on toggles
+			widget.add_listeners_to_toggles();
 		}).catch(function (err) {
 			// something went wrong
 			console.warn("Failed to load widget.html", err);
@@ -41,6 +44,40 @@ var widget = {
 				e.target.classList.add("open");
 			}
 		});
+	},
+
+	add_listeners_to_toggles : function(){
+		// toggle background to a warm color and back to original color
+		document.getElementById("warm-background-toggle").addEventListener('click', function(e){
+			if(e.target.checked){
+				// document.body.style.backgroundColor = "#EDDD6E"; //orange
+				document.body.style.backgroundColor = "#EDD1B0"; //peach
+			}else{
+				document.body.style.backgroundColor = "";
+			}
+		})
+
+		document.getElementById("hide-images-toggle").addEventListener('click', function(e){
+			// get all images
+			all_images = document.querySelectorAll("img");
+			if(e.target.checked){
+				for(i=0;i<all_images.length;i++){
+					all_images[i].style.display = 'none';
+				}
+			}else{
+				for(i=0;i<all_images.length;i++){
+					all_images[i].style.display = '';
+				}
+			}
+		})
+
+		document.getElementById("open-dyslexic-font-toggle").addEventListener('click', function(e){
+			console.log("open-dyslexic-font-toggle");
+		})
+
+		document.getElementById("highlight-links-toggle").addEventListener('click', function(e){
+			console.log("highlight-links-toggle");
+		})
 	}
 }
 

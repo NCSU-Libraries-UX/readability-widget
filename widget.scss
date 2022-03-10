@@ -7,15 +7,13 @@
 
 #readability-widget {
     position: fixed;
-    right: 0px;
+    right: 10px;
     bottom: 0px;
     width: 350px;
-    @media only screen and (max-width: 500px) {
-        padding: 5%;
-        width: 90%;
-    }
 
     #widget-toggle {
+        text-align: right;
+
         button {
             background: #cc0000;
             border: 0px;
@@ -28,7 +26,7 @@
             position: relative;
         }
 
-        button.closed::after {
+        button.closed::after { //up triangle
             width: 0; 
             height: 0; 
             position: absolute;
@@ -40,13 +38,16 @@
             content:"";
         }
 
-        button.open::after {
+        button.open::after { //down triangle
+            content:"";
             width: 0; 
             height: 0; 
             position: absolute;
             top: 18px;
             right: 9px;
-            content:"\274c";
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid white;
         }
 
         button:focus {
