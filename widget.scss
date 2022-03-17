@@ -5,6 +5,27 @@
 * this file styles the widget content and button
 */
 
+@font-face {
+  font-family: "Open Dyslexic";
+  src: url("./fonts/OpenDyslexic-Regular.otf") format("opentype"),
+  url("./fonts/OpenDyslexic-Bold.otf") format("opentype");
+}
+
+body.open-dyslexic{
+    font-family: "Open Dyslexic";
+
+    * {
+        font-family: "Open Dyslexic" !important;
+    }
+}
+
+a.readability-highlighted-link {
+    border-bottom: 2px solid black;
+    background: yellow;
+    text-decoration: none;
+    color: black;
+}
+
 #readability-widget {
     position: fixed;
     right: 10px;

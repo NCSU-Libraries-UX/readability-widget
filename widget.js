@@ -72,10 +72,29 @@ var widget = {
 		})
 
 		document.getElementById("open-dyslexic-font-toggle").addEventListener('click', function(e){
+			if(e.target.checked) {
+				// make body font OpenDyslexic
+				document.body.classList.add("open-dyslexic");
+
+			} else {
+				// make font regular again
+				document.body.classList.remove("open-dyslexic");
+			}
 			console.log("open-dyslexic-font-toggle");
 		})
 
 		document.getElementById("highlight-links-toggle").addEventListener('click', function(e){
+			// get all <a> tags
+			all_links = document.querySelectorAll("a");
+			if(e.target.checked){
+				for(i=0;i<all_links.length;i++){
+					all_links[i].classList.add("readability-highlighted-link");
+				}
+			}else{
+				for(i=0;i<all_links.length;i++){
+					all_links[i].classList.remove("readability-highlighted-link");
+				}
+			}		
 			console.log("highlight-links-toggle");
 		})
 	}
