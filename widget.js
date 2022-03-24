@@ -1,7 +1,7 @@
-//
 // Loads widget on page
+// initiates widget functionality (toggle button, on|off switches)
 
-var widget = {
+var ra_widget = {
 	// load widget to page
 	init:function(){
 
@@ -15,10 +15,10 @@ var widget = {
 			b.innerHTML += html;
 
 			// once widget has loaded init event listener
-			widget.toggle_widget();
+			ra_widget.toggle_widget();
 
 			// enable event listeners on toggles
-			widget.add_listeners_to_toggles();
+			ra_widget.add_listeners_to_toggles();
 		}).catch(function (err) {
 			// something went wrong
 			console.warn("Failed to load widget.html", err);
@@ -27,31 +27,49 @@ var widget = {
 	},
 
 	toggle_widget : function(e){
-		// add event listener to widget button
+		// add event listener to widget button (toggle on|off)
 		document.querySelector("#widget-toggle-button").addEventListener("click", function(e){
-			widget_content = document.getElementById("widget-content");
-			if(widget_content.classList.contains("visible")){
-				widget_content.classList.remove("visible");
+			widget_element = document.getElementById('readability-widget');
+			if(widget_element.classList.contains('closed')){
+				ra_widget.show_widget();
 			}else{
-				widget_content.classList.add("visible");
-			}
-
-			if(e.target.classList.contains("open")) {
-				e.target.classList.remove("open");
-				e.target.classList.add("closed");
-			} else {
-				e.target.classList.remove("closed");
-				e.target.classList.add("open");
+				ra_widget.hide_widget();
 			}
 		});
+
+		ra_widget.hide_on_click_outside_of_widget();
+	},
+	// reveal widget to user
+	show_widget : function(){
+		widget_element = document.getElementById('readability-widget');
+		widget_element.classList.remove('closed');
+		widget_element.classList.add('open');
+	},
+	
+	// hide widget (still revealing widget toggle button)
+	hide_widget : function(){
+		widget_element = document.getElementById('readability-widget');
+		widget_element.classList.remove('open');
+		widget_element.classList.add('closed');
+	},
+
+	// if click happens outside popover, close it
+	hide_on_click_outside_of_widget : function() {
+		widget_element = document.getElementById('readability-widget');
+		const outside_click_listener = event => {
+			if (!widget_element.contains(event.target) && !widget_element.classList.contains('closed')) {
+				ra_widget.hide_widget();
+			}
+		}
+		// add event listener to body
+		document.addEventListener('click', outside_click_listener);
 	},
 
 	add_listeners_to_toggles : function(){
 		// toggle background to a warm color and back to original color
 		document.getElementById("warm-background-toggle").addEventListener('click', function(e){
 			if(e.target.checked){
-				// document.body.style.backgroundColor = "#EDDD6E"; //orange
-				document.body.style.backgroundColor = "#EDD1B0"; //peach
+				document.body.style.backgroundColor = "#F5E4D1"; //peach
 			}else{
 				document.body.style.backgroundColor = "";
 			}
@@ -102,5 +120,5 @@ var widget = {
 
 // once DOM is fully loaded, initialize widget
 window.addEventListener('DOMContentLoaded', function(e) {
-    widget.init();
+    ra_widget.init();
 });

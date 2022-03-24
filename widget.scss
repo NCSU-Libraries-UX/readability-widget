@@ -21,9 +21,12 @@ body.open-dyslexic{
 
 a.readability-highlighted-link {
     border-bottom: 2px solid black;
-    background: yellow;
+    background: #FAC800;
     text-decoration: none;
-    color: black;
+    color: black !important;
+}
+a.readability-highlighted-link:hover {
+    border-bottom: none;
 }
 
 #readability-widget {
@@ -31,6 +34,43 @@ a.readability-highlighted-link {
     right: 10px;
     bottom: 0px;
     width: 350px;
+
+    &.open{
+        #widget-toggle {
+            button::after { //down triangle
+                content:"";
+                width: 0; 
+                height: 0; 
+                position: absolute;
+                top: 18px;
+                right: 9px;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-top: 10px solid white;
+            }
+        }
+        #widget-content{
+            display: block;
+        }    
+    }
+    &.closed{
+        #widget-toggle {
+            button.closed::after { //up triangle
+                width: 0; 
+                height: 0; 
+                position: absolute;
+                top: 18px;
+                right: 9px;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-bottom: 10px solid white;
+                content:"";
+            }
+        }
+        #widget-content{
+            display: none;
+        } 
+    }
 
     #widget-toggle {
         text-align: right;
@@ -47,43 +87,18 @@ a.readability-highlighted-link {
             position: relative;
         }
 
-        button.closed::after { //up triangle
-            width: 0; 
-            height: 0; 
-            position: absolute;
-            top: 18px;
-            right: 9px;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-bottom: 10px solid white;
-            content:"";
-        }
-
-        button.open::after { //down triangle
-            content:"";
-            width: 0; 
-            height: 0; 
-            position: absolute;
-            top: 18px;
-            right: 9px;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-top: 10px solid white;
-        }
-
         button:focus {
             outline: 3px solid blue;
         }
 
+        button:hover{
+            cursor: pointer;
+        }
+
     }
     #widget-content {
-
-        &.visible{
-            display: block;
-        }
         background: #ffffff;
         border: 1px solid #555;
-        display: none;
         font-family: "UniversLight";
         font-size: 1.25rem;
         padding: 20px;
