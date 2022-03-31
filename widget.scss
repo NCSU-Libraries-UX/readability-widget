@@ -72,6 +72,23 @@ a.readability-highlighted-link:hover {
         } 
     }
 
+    &.hidden{
+        right: -112px;
+        #widget-toggle {
+            button {
+                background-color: #777777;
+                transition: right .25s;
+                right: 0px;
+            }
+
+            button:hover{
+                background-color: #CC0000;
+                position: relative;
+                right: 112px;
+            }
+        }
+    }
+
     #widget-toggle {
         text-align: right;
 
@@ -103,6 +120,19 @@ a.readability-highlighted-link:hover {
         font-size: 1.25rem;
         padding: 20px;
         max-width: 400px;
+
+        #hide-widget-button {
+            background: none;
+            border: none;
+            color: #777777;
+            font-family: "UniversLight";
+
+            font-size: 1rem;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
 
         & *:last-child{
             margin-bottom: 0px;

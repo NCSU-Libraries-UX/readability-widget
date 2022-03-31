@@ -14,11 +14,20 @@ var ra_widget = {
 			var b = document.body;
 			b.innerHTML += html;
 
-			// once widget has loaded init event listener
+			// once widget has loaded enable event listener on button
 			ra_widget.toggle_widget();
 
 			// enable event listeners on toggles
 			ra_widget.add_listeners_to_toggles();
+
+			// close when clicking outside widget area
+			ra_widget.close_on_click_outside_of_widget();
+
+			// close when esc key pressed
+			ra_widget.close_on_escape();
+
+			// hide widget when hide button pressed
+			ra_widget.hide_when_hidden();
 		}).catch(function (err) {
 			// something went wrong
 			console.warn("Failed to load widget.html", err);
@@ -33,36 +42,54 @@ var ra_widget = {
 			if(widget_element.classList.contains('closed')){
 				ra_widget.show_widget();
 			}else{
-				ra_widget.hide_widget();
+				ra_widget.close_widget();
 			}
 		});
-
-		ra_widget.hide_on_click_outside_of_widget();
 	},
 	// reveal widget to user
 	show_widget : function(){
 		widget_element = document.getElementById('readability-widget');
 		widget_element.classList.remove('closed');
+		widget_element.classList.remove('hidden');
 		widget_element.classList.add('open');
 	},
 	
 	// hide widget (still revealing widget toggle button)
-	hide_widget : function(){
+	close_widget : function(){
 		widget_element = document.getElementById('readability-widget');
 		widget_element.classList.remove('open');
 		widget_element.classList.add('closed');
 	},
 
 	// if click happens outside popover, close it
-	hide_on_click_outside_of_widget : function() {
+	close_on_click_outside_of_widget : function() {
 		widget_element = document.getElementById('readability-widget');
 		const outside_click_listener = event => {
 			if (!widget_element.contains(event.target) && !widget_element.classList.contains('closed')) {
-				ra_widget.hide_widget();
+				ra_widget.close_widget();
 			}
 		}
 		// add event listener to body
 		document.addEventListener('click', outside_click_listener);
+	},
+
+	close_on_escape : function() {
+		const escape_key_listener = event => {
+			//console.log(event);
+			if(event.keyCode == 27) {
+				ra_widget.close_widget();
+			}
+		}
+		document.addEventListener("keydown", escape_key_listener);
+	},
+
+	hide_when_hidden : function() {
+		document.getElementById("hide-widget-button").addEventListener('click', function(e){
+			ra_widget.close_widget();
+			// and hide it too
+			widget_element = document.getElementById('readability-widget');
+			widget_element.classList.add("hidden");
+		})
 	},
 
 	add_listeners_to_toggles : function(){
