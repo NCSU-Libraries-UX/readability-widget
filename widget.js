@@ -27,7 +27,10 @@ var ra_widget = {
 			ra_widget.close_on_escape();
 
 			// hide widget when hide button pressed
-			ra_widget.hide_when_hidden();
+			ra_widget.set_hidden_event_listener();
+
+			// check localstorage toggles
+			ra_widget.check_localstorage_toggles();
 		}).catch(function (err) {
 			// something went wrong
 			console.warn("Failed to load widget.html", err);
@@ -52,6 +55,8 @@ var ra_widget = {
 		widget_element.classList.remove('closed');
 		widget_element.classList.remove('hidden');
 		widget_element.classList.add('open');
+
+		ra_widget.set_widget_hidden_local_storage('false');
 	},
 	
 	// hide widget (still revealing widget toggle button)
@@ -83,13 +88,52 @@ var ra_widget = {
 		document.addEventListener("keydown", escape_key_listener);
 	},
 
-	hide_when_hidden : function() {
+	set_hidden_event_listener : function() {
 		document.getElementById("hide-widget-button").addEventListener('click', function(e){
-			ra_widget.close_widget();
-			// and hide it too
-			widget_element = document.getElementById('readability-widget');
-			widget_element.classList.add("hidden");
+			ra_widget.hide_widget();
 		})
+	},
+
+	hide_widget : function(){
+		ra_widget.close_widget();
+		// and hide it too
+		widget_element = document.getElementById('readability-widget');
+		widget_element.classList.add("hidden");
+
+		// set widget localStorge 
+		ra_widget.set_widget_hidden_local_storage('true');
+	},
+
+	check_localstorage_toggles : function(){
+		// check if we should hide widget
+		if(localStorage.widget_hidden == 'true'){
+			ra_widget.hide_widget();
+		}
+
+		// check for warm background
+		if(localStorage.warm_background == 'true'){
+			document.body.style.backgroundColor = "#F5E4D1"; //peach
+		}
+
+		// check for images
+		if(localStorage.hide_all_images == 'true'){
+			ra_widget.hide_show_all_images('true');
+		}
+
+		// check for dyslexic font storage
+		if(localStorage.open_dyslexic_font == 'true'){
+			document.body.classList.add("open-dyslexic");
+		}
+
+		// check for highlight links storage
+		if(localStorage.highlight_links == 'true'){
+			ra_widget.hide_show_highlighted_links('true');
+		}
+
+	},
+
+	set_widget_hidden_local_storage : function(value){
+		localStorage.widget_hidden = value;
 	},
 
 	add_listeners_to_toggles : function(){
@@ -97,22 +141,18 @@ var ra_widget = {
 		document.getElementById("warm-background-toggle").addEventListener('click', function(e){
 			if(e.target.checked){
 				document.body.style.backgroundColor = "#F5E4D1"; //peach
+				localStorage.warm_background = 'true';
 			}else{
 				document.body.style.backgroundColor = "";
+				localStorage.warm_background = 'false';
 			}
 		})
 
 		document.getElementById("hide-images-toggle").addEventListener('click', function(e){
-			// get all images
-			all_images = document.querySelectorAll("img");
 			if(e.target.checked){
-				for(i=0;i<all_images.length;i++){
-					all_images[i].style.display = 'none';
-				}
+				ra_widget.hide_show_all_images('true');
 			}else{
-				for(i=0;i<all_images.length;i++){
-					all_images[i].style.display = '';
-				}
+				ra_widget.hide_show_all_images('false');
 			}
 		})
 
@@ -121,27 +161,56 @@ var ra_widget = {
 				// make body font OpenDyslexic
 				document.body.classList.add("open-dyslexic");
 
+				// set local storage
+				localStorage.open_dyslexic_font = 'true';
+
 			} else {
 				// make font regular again
 				document.body.classList.remove("open-dyslexic");
+
+				// set local storage
+				localStorage.open_dyslexic_font = 'false';
 			}
-			console.log("open-dyslexic-font-toggle");
 		})
 
 		document.getElementById("highlight-links-toggle").addEventListener('click', function(e){
-			// get all <a> tags
-			all_links = document.querySelectorAll("a");
 			if(e.target.checked){
-				for(i=0;i<all_links.length;i++){
-					all_links[i].classList.add("readability-highlighted-link");
-				}
+				ra_widget.hide_show_highlighted_links('true');
 			}else{
-				for(i=0;i<all_links.length;i++){
-					all_links[i].classList.remove("readability-highlighted-link");
-				}
+				ra_widget.hide_show_highlighted_links('false');
 			}		
-			console.log("highlight-links-toggle");
 		})
+	},
+
+	hide_show_all_images : function(value){
+		// get all images
+		all_images = document.querySelectorAll("img");
+		if(value == 'true'){
+			for(i=0;i<all_images.length;i++){
+				all_images[i].style.display = 'none';
+			}
+		}else if(value == 'false'){
+			for(i=0;i<all_images.length;i++){
+				all_images[i].style.display = '';
+			}
+		}
+		localStorage.hide_all_images = value;
+	},
+
+	hide_show_highlighted_links : function(value){
+		// get all <a> tags
+		all_links = document.querySelectorAll("a");
+		if(value == 'true'){
+			for(i=0;i<all_links.length;i++){
+				all_links[i].classList.add("readability-highlighted-link");
+			}
+		}else if(value == 'false'){
+			for(i=0;i<all_links.length;i++){
+				all_links[i].classList.remove("readability-highlighted-link");
+			}
+		}
+
+		localStorage.highlight_links = value;
 	}
 }
 
