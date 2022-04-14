@@ -24,8 +24,8 @@ a.readability-highlighted-link:hover {
 #readability-widget {
   position: fixed;
   right: 10px;
-  bottom: 0px;
-  width: 350px; }
+  width: 350px;
+  transition: bottom .25s; }
   #readability-widget.open #widget-toggle button::after {
     content: "";
     width: 0;
@@ -48,8 +48,6 @@ a.readability-highlighted-link:hover {
     border-right: 10px solid transparent;
     border-bottom: 10px solid white;
     content: ""; }
-  #readability-widget.closed #widget-content {
-    display: none; }
   #readability-widget.hidden {
     right: -112px; }
     #readability-widget.hidden #widget-toggle button {

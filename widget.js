@@ -14,6 +14,9 @@ var ra_widget = {
 			var b = document.body;
 			b.innerHTML += html;
 
+			// set bottom of article to - height of the widget content
+			ra_widget.close_widget();
+
 			// once widget has loaded enable event listener on button
 			ra_widget.toggle_widget();
 
@@ -55,6 +58,8 @@ var ra_widget = {
 		widget_element.classList.remove('closed');
 		widget_element.classList.remove('hidden');
 		widget_element.classList.add('open');
+		// set bottom of article to 0px
+		widget_element.style.bottom = "0px";
 
 		ra_widget.set_widget_hidden_local_storage('false');
 	},
@@ -64,6 +69,10 @@ var ra_widget = {
 		widget_element = document.getElementById('readability-widget');
 		widget_element.classList.remove('open');
 		widget_element.classList.add('closed');
+
+		// set bottom of article to - height of the widget content
+		widget_content = document.getElementById("widget-content");
+		widget_element.style.bottom = -(widget_content.offsetHeight) + "px";
 	},
 
 	// if click happens outside popover, close it
@@ -113,21 +122,25 @@ var ra_widget = {
 		// check for warm background
 		if(localStorage.warm_background == 'true'){
 			document.body.style.backgroundColor = "#F5E4D1"; //peach
+			document.getElementById("warm-background-toggle").checked = true;
 		}
 
 		// check for images
 		if(localStorage.hide_all_images == 'true'){
 			ra_widget.hide_show_all_images('true');
+			document.getElementById("hide-images-toggle").checked = true;
 		}
 
 		// check for dyslexic font storage
 		if(localStorage.open_dyslexic_font == 'true'){
 			document.body.classList.add("open-dyslexic");
+			document.getElementById("open-dyslexic-font-toggle").checked = true;
 		}
 
 		// check for highlight links storage
 		if(localStorage.highlight_links == 'true'){
 			ra_widget.hide_show_highlighted_links('true');
+			document.getElementById("highlight-links-toggle").checked = true;
 		}
 
 	},

@@ -32,10 +32,13 @@ a.readability-highlighted-link:hover {
 #readability-widget {
     position: fixed;
     right: 10px;
-    bottom: 0px;
+    //bottom: -350px;
     width: 350px;
 
+    transition: bottom .25s;
+
     &.open{
+        //bottom: 0px;
         #widget-toggle {
             button::after { //down triangle
                 content:"";
@@ -54,6 +57,7 @@ a.readability-highlighted-link:hover {
         }    
     }
     &.closed{
+        //bottom: -350px;
         #widget-toggle {
             button.closed::after { //up triangle
                 width: 0; 
@@ -67,9 +71,6 @@ a.readability-highlighted-link:hover {
                 content:"";
             }
         }
-        #widget-content{
-            display: none;
-        } 
     }
 
     &.hidden{
