@@ -139,7 +139,7 @@ a.readability-highlighted-link:hover {
             margin-bottom: 0px;
         }
         /* The switch - the box around the slider */
-        label.switch {
+        label.readability-switch {
             display: grid;
             grid-template-columns: 3fr 1fr;
             height: 34px;
@@ -147,7 +147,7 @@ a.readability-highlighted-link:hover {
             position: relative;
             width: 100%;
 
-            span.switch-label{
+            span.readability-switch-label{
                 line-height: 34px;
             }
 
