@@ -34,6 +34,7 @@ a.readability-highlighted-link:hover {
     right: 10px;
     //bottom: -350px;
     width: 350px;
+    z-index: 999;
 
     transition: bottom .25s;
 
@@ -149,6 +150,7 @@ a.readability-highlighted-link:hover {
 
             span.readability-switch-label{
                 line-height: 34px;
+                font-size: 1.2rem;
             }
 
             /* Move toggle to the right */
