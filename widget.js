@@ -15,7 +15,9 @@ var ra_widget = {
 			b.innerHTML += html;
 
 			// set bottom of article to - height of the widget content
-			ra_widget.close_widget();
+			var timer = setTimeout(function(){
+				ra_widget.close_widget();
+			}, 150);
 
 			// once widget has loaded enable event listener on button
 			ra_widget.toggle_widget();
@@ -34,6 +36,7 @@ var ra_widget = {
 
 			// check localstorage toggles
 			ra_widget.check_localstorage_toggles();
+
 		}).catch(function (err) {
 			// something went wrong
 			console.warn("Failed to load widget.html", err);
@@ -66,12 +69,14 @@ var ra_widget = {
 	
 	// hide widget (still revealing widget toggle button)
 	close_widget : function(){
+
 		widget_element = document.getElementById('readability-widget');
 		widget_element.classList.remove('open');
 		widget_element.classList.add('closed');
 
 		// set bottom of article to - height of the widget content
 		widget_content = document.getElementById("widget-content");
+		console.log(widget_content.offsetHeight);
 		widget_element.style.bottom = -(widget_content.offsetHeight) + "px";
 	},
 
