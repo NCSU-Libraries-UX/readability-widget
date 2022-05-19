@@ -98,7 +98,7 @@ a.readability-highlighted-link:hover {
             background: #cc0000;
             border: 0px;
             color: #FFF;
-            font-family: "UniversRoman";
+            font-family: "UniversRoman", "Roboto", "Arial", sans-serif;
             font-size: 1.25rem;
             font-weight: bold;
             line-height: 1.25;
@@ -118,7 +118,7 @@ a.readability-highlighted-link:hover {
     #widget-content {
         background: #ffffff;
         border: 1px solid #555;
-        font-family: "UniversLight";
+        font-family: "UniversLight", "Roboto", "Arial", sans-serif;
         font-size: 1.25rem;
         padding: 20px;
         max-width: 400px;
@@ -127,7 +127,7 @@ a.readability-highlighted-link:hover {
             background: none;
             border: none;
             color: #777777;
-            font-family: "UniversLight";
+            font-family: "UniversLight", "Roboto", "Arial", sans-serif;
 
             font-size: 1rem;
 
