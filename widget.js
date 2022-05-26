@@ -126,7 +126,10 @@ var ra_widget = {
 
 		// check for warm background
 		if(localStorage.warm_background == 'true'){
-			document.body.style.backgroundColor = "#F5E4D1"; //peach
+			//document.body.style.backgroundColor = "#F5E4D1"; //peach
+			const warm_overlay_el = document.createElement('div');
+			warm_overlay_el.id = "readability-warm-overlay";
+			document.body.appendChild(warm_overlay_el);
 			document.getElementById("warm-background-toggle").checked = true;
 		}
 
@@ -158,10 +161,14 @@ var ra_widget = {
 		// toggle background to a warm color and back to original color
 		document.getElementById("warm-background-toggle").addEventListener('click', function(e){
 			if(e.target.checked){
-				document.body.style.backgroundColor = "#F5E4D1"; //peach
+				//document.body.style.backgroundColor = "#F5E4D1"; //peach
+				const warm_overlay_el = document.createElement('div');
+				warm_overlay_el.id = "readability-warm-overlay";
+				document.body.appendChild(warm_overlay_el);
 				localStorage.warm_background = 'true';
 			}else{
-				document.body.style.backgroundColor = "";
+				//document.body.style.backgroundColor = "";
+				document.getElementById("readability-warm-overlay").remove();
 				localStorage.warm_background = 'false';
 			}
 		})

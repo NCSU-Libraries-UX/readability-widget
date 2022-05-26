@@ -19,6 +19,24 @@ body.open-dyslexic{
     }
 }
 
+.readability-warm-overlay {
+    top: -10% !important;
+    margin: 0 !important;
+    opacity: 1 !important;
+    padding: 0 !important;
+    right: -10% !important;
+    width: 120% !important;
+    height: 120% !important;
+    display: block !important;
+    position: fixed !important;
+    border-radius: 0 !important;
+    z-index: 2147483647 !important;
+    pointer-events: none !important;
+    transition: opacity 0.1s !important;
+    mix-blend-mode: multiply !important;
+    background: rgba(245, 229, 209, 0.7) !important;
+}
+
 a.readability-highlighted-link {
     border-bottom: 2px solid black;
     background: #FAC800;
