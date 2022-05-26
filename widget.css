@@ -6,170 +6,207 @@
 */
 @font-face {
   font-family: "Open Dyslexic";
-  src: url("./fonts/OpenDyslexic-Regular.otf") format("opentype"), url("./fonts/OpenDyslexic-Bold.otf") format("opentype"); }
+  src: url("./fonts/OpenDyslexic-Regular.otf") format("opentype"), url("./fonts/OpenDyslexic-Bold.otf") format("opentype");
+}
 body.open-dyslexic {
-  font-family: "Open Dyslexic"; }
-  body.open-dyslexic * {
-    font-family: "Open Dyslexic" !important; }
+  font-family: "Open Dyslexic";
+}
+body.open-dyslexic * {
+  font-family: "Open Dyslexic" !important;
+}
 
 a.readability-highlighted-link {
   border-bottom: 2px solid black;
   background: #FAC800;
   text-decoration: none;
-  color: black !important; }
+  color: black !important;
+}
 
 a.readability-highlighted-link:hover {
-  border-bottom: none; }
+  border-bottom: none;
+}
 
 #readability-widget {
   position: fixed;
   right: 10px;
   width: 350px;
   z-index: 999;
-  transition: bottom .25s; }
-  #readability-widget.open #widget-toggle button::after {
-    content: "";
-    width: 0;
-    height: 0;
-    position: absolute;
-    top: 18px;
-    right: 9px;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 10px solid white; }
-  #readability-widget.open #widget-content {
-    display: block; }
-  #readability-widget.closed #widget-toggle button.closed::after {
-    width: 0;
-    height: 0;
-    position: absolute;
-    top: 18px;
-    right: 9px;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 10px solid white;
-    content: ""; }
-  #readability-widget.hidden {
-    right: -112px; }
-    #readability-widget.hidden #widget-toggle button {
-      background-color: #777777;
-      transition: right .25s;
-      right: 0px; }
-    #readability-widget.hidden #widget-toggle button:hover {
-      background-color: #CC0000;
-      position: relative;
-      right: 112px; }
-  #readability-widget #widget-toggle {
-    text-align: right; }
-    #readability-widget #widget-toggle button {
-      background: #cc0000;
-      border: 0px;
-      color: #FFF;
-      font-family: "UniversRoman";
-      font-size: 1.25rem;
-      font-weight: bold;
-      line-height: 1.25;
-      padding: 13px 35px 10px 10px;
-      position: relative; }
-    #readability-widget #widget-toggle button:focus {
-      outline: 3px solid blue; }
-    #readability-widget #widget-toggle button:hover {
-      cursor: pointer; }
-  #readability-widget #widget-content {
-    background: #ffffff;
-    border: 1px solid #555;
-    font-family: "UniversLight";
-    font-size: 1.25rem;
-    padding: 20px;
-    max-width: 400px;
-    /* The switch - the box around the slider */ }
-    #readability-widget #widget-content #hide-widget-button {
-      background: none;
-      border: none;
-      color: #777777;
-      font-family: "UniversLight";
-      font-size: 1rem; }
-      #readability-widget #widget-content #hide-widget-button:hover {
-        text-decoration: underline; }
-    #readability-widget #widget-content *:last-child {
-      margin-bottom: 0px; }
-    #readability-widget #widget-content label.readability-switch {
-      display: grid;
-      grid-template-columns: 3fr 1fr;
-      height: 34px;
-      margin-bottom: 10px;
-      position: relative;
-      width: 100%;
-      /* Move toggle to the right */
-      /* Hide default HTML checkbox */
-      /* The toggle switch */ }
-      #readability-widget #widget-content label.readability-switch span.readability-switch-label {
-        line-height: 34px;
-        font-size: 1.2rem; }
-      #readability-widget #widget-content label.readability-switch span.switch-toggle-container {
-        justify-self: end;
-        position: relative;
-        width: 60px; }
-      #readability-widget #widget-content label.readability-switch input {
-        opacity: 0;
-        width: 0;
-        height: 0; }
-      #readability-widget #widget-content label.readability-switch input:focus + span.toggle-switch {
-        outline: 3px solid blue; }
-      #readability-widget #widget-content label.readability-switch span.toggle-switch {
-        background-color: #ccc;
-        border-radius: 34px;
-        bottom: 0;
-        cursor: pointer;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        left: 0;
-        position: absolute;
-        right: 0;
-        top: 0;
-        transition: .2s;
-        -webkit-transition: .2s; }
-        #readability-widget #widget-content label.readability-switch span.toggle-switch .label-on {
-          align-self: center;
-          font-size: 0.75rem;
-          text-align: center;
-          z-index: 0;
-          opacity: 0; }
-        #readability-widget #widget-content label.readability-switch span.toggle-switch .label-off {
-          align-self: center;
-          font-size: 0.75rem;
-          text-align: center;
-          padding-right: 4px;
-          z-index: 0; }
-      #readability-widget #widget-content label.readability-switch span.toggle-switch:before {
-        background-color: white;
-        border-radius: 50%;
-        bottom: 4px;
-        content: "";
-        height: 26px;
-        left: 4px;
-        position: absolute;
-        transition: 0s;
-        -webkit-transition: 0s;
-        width: 26px; }
-      #readability-widget #widget-content label.readability-switch input:checked + .toggle-switch {
-        background-color: #2196F3; }
-        #readability-widget #widget-content label.readability-switch input:checked + .toggle-switch .label-off {
-          opacity: 0; }
-        #readability-widget #widget-content label.readability-switch input:checked + .toggle-switch .label-on {
-          opacity: 1; }
-      #readability-widget #widget-content label.readability-switch input:focus + .toggle-switch {
-        box-shadow: 0 0 1px #2196F3; }
-      #readability-widget #widget-content label.readability-switch input:checked + .toggle-switch:before {
-        -webkit-transform: translateX(26px);
-        -ms-transform: translateX(26px);
-        transform: translateX(26px); }
-    #readability-widget #widget-content p {
-      font-size: 1rem; }
-      #readability-widget #widget-content p a {
-        color: #cc0000;
-        text-decoration: none; }
-      #readability-widget #widget-content p a:hover {
-        text-decoration: underline; }
+  transition: bottom 0.25s;
+}
+#readability-widget.open #widget-toggle button::after {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 18px;
+  right: 9px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid white;
+}
+#readability-widget.open #widget-content {
+  display: block;
+}
+#readability-widget.closed #widget-toggle button.closed::after {
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 18px;
+  right: 9px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid white;
+  content: "";
+}
+#readability-widget.hidden {
+  right: -112px;
+}
+#readability-widget.hidden #widget-toggle button {
+  background-color: #777777;
+  transition: right 0.25s;
+  right: 0px;
+}
+#readability-widget.hidden #widget-toggle button:hover {
+  background-color: #CC0000;
+  position: relative;
+  right: 112px;
+}
+#readability-widget #widget-toggle {
+  text-align: right;
+}
+#readability-widget #widget-toggle button {
+  background: #cc0000;
+  border: 0px;
+  color: #FFF;
+  font-family: "UniversRoman", "Roboto", "Arial", sans-serif;
+  font-size: 1.25rem;
+  font-weight: bold;
+  line-height: 1.25;
+  padding: 13px 35px 10px 10px;
+  position: relative;
+}
+#readability-widget #widget-toggle button:focus {
+  outline: 3px solid blue;
+}
+#readability-widget #widget-toggle button:hover {
+  cursor: pointer;
+}
+#readability-widget #widget-content {
+  background: #ffffff;
+  border: 1px solid #555;
+  font-family: "UniversLight", "Roboto", "Arial", sans-serif;
+  font-size: 1.25rem;
+  padding: 20px;
+  max-width: 400px;
+  /* The switch - the box around the slider */
+}
+#readability-widget #widget-content #hide-widget-button {
+  background: none;
+  border: none;
+  color: #777777;
+  font-family: "UniversLight", "Roboto", "Arial", sans-serif;
+  font-size: 1rem;
+}
+#readability-widget #widget-content #hide-widget-button:hover {
+  text-decoration: underline;
+}
+#readability-widget #widget-content *:last-child {
+  margin-bottom: 0px;
+}
+#readability-widget #widget-content label.readability-switch {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  height: 34px;
+  margin-bottom: 10px;
+  position: relative;
+  width: 100%;
+  /* Move toggle to the right */
+  /* Hide default HTML checkbox */
+  /* The toggle switch */
+}
+#readability-widget #widget-content label.readability-switch span.readability-switch-label {
+  line-height: 34px;
+  font-size: 1.2rem;
+}
+#readability-widget #widget-content label.readability-switch span.switch-toggle-container {
+  justify-self: end;
+  position: relative;
+  width: 60px;
+}
+#readability-widget #widget-content label.readability-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+#readability-widget #widget-content label.readability-switch input:focus + span.toggle-switch {
+  outline: 3px solid blue;
+}
+#readability-widget #widget-content label.readability-switch span.toggle-switch {
+  background-color: #ccc;
+  border-radius: 34px;
+  bottom: 0;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.2s;
+  -webkit-transition: 0.2s;
+}
+#readability-widget #widget-content label.readability-switch span.toggle-switch .label-on {
+  align-self: center;
+  font-size: 0.75rem;
+  text-align: center;
+  z-index: 0;
+  opacity: 0;
+}
+#readability-widget #widget-content label.readability-switch span.toggle-switch .label-off {
+  align-self: center;
+  font-size: 0.75rem;
+  text-align: center;
+  padding-right: 4px;
+  z-index: 0;
+}
+#readability-widget #widget-content label.readability-switch span.toggle-switch:before {
+  background-color: white;
+  border-radius: 50%;
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: 0s;
+  -webkit-transition: 0s;
+  width: 26px;
+}
+#readability-widget #widget-content label.readability-switch input:checked + .toggle-switch {
+  background-color: #2196F3;
+}
+#readability-widget #widget-content label.readability-switch input:checked + .toggle-switch .label-off {
+  opacity: 0;
+}
+#readability-widget #widget-content label.readability-switch input:checked + .toggle-switch .label-on {
+  opacity: 1;
+}
+#readability-widget #widget-content label.readability-switch input:focus + .toggle-switch {
+  box-shadow: 0 0 1px #2196F3;
+}
+#readability-widget #widget-content label.readability-switch input:checked + .toggle-switch:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+#readability-widget #widget-content p {
+  font-size: 1rem;
+}
+#readability-widget #widget-content p a {
+  color: #cc0000;
+  text-decoration: none;
+}
+#readability-widget #widget-content p a:hover {
+  text-decoration: underline;
+}
 
 /*# sourceMappingURL=widget.css.map */
