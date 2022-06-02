@@ -38,10 +38,16 @@ body.open-dyslexic{
 }
 
 a.readability-highlighted-link {
-    border-bottom: 2px solid black;
-    background: #FAC800;
-    text-decoration: none;
+    border-bottom: 2px solid black !important;
+    background: #FAC800 !important;
     color: black !important;
+    text-decoration: none !important;
+
+    *{
+        background: #FAC800 !important;
+        color: black !important;
+        text-decoration: none !important;
+    }
 }
 a.readability-highlighted-link:hover {
     border-bottom: none;

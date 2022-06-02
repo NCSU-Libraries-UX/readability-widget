@@ -30,10 +30,14 @@ body.open-dyslexic {
   background: rgba(245, 229, 209, 0.7) !important; }
 
 a.readability-highlighted-link {
-  border-bottom: 2px solid black;
-  background: #FAC800;
-  text-decoration: none;
-  color: black !important; }
+  border-bottom: 2px solid black !important;
+  background: #FAC800 !important;
+  color: black !important;
+  text-decoration: none !important; }
+  a.readability-highlighted-link * {
+    background: #FAC800 !important;
+    color: black !important;
+    text-decoration: none !important; }
 
 a.readability-highlighted-link:hover {
   border-bottom: none; }

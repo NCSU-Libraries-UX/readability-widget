@@ -5,7 +5,7 @@ var ra_widget = {
 	// load widget to page
 	init:function(){
 
-		fetch('./widget.html').then(function (response) {
+		fetch('https://libweb-d4.lib.ncsu.edu/development/readability-widget/widget.html').then(function (response) {
 			// successful API call
 			return response.text();
 		}).then(function (html) {
@@ -16,7 +16,7 @@ var ra_widget = {
 
 			// set bottom of article to - height of the widget content
 			var timer = setTimeout(function(){
-				ra_widget.close_widget();
+				// ra_widget.close_widget();
 			}, 150);
 
 			// once widget has loaded enable event listener on button
@@ -36,6 +36,15 @@ var ra_widget = {
 
 			// check localstorage toggles
 			ra_widget.check_localstorage_toggles();
+			
+			// fire additional stuff after page has fully loaded
+			window.addEventListener('load', function(e) {
+				ra_widget.close_widget();
+				// check localstorage toggles
+				ra_widget.check_localstorage_toggles();
+			});
+
+			
 
 		}).catch(function (err) {
 			// something went wrong
@@ -241,5 +250,6 @@ var ra_widget = {
 
 // once DOM is fully loaded, initialize widget
 window.addEventListener('DOMContentLoaded', function(e) {
-    ra_widget.init();
+	ra_widget.init();
 });
+
