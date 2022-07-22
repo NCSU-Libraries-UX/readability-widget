@@ -16,7 +16,7 @@ var ra_widget = {
 
 			// set bottom of article to - height of the widget content
 			var timer = setTimeout(function(){
-				 ra_widget.close_widget();
+				//  ra_widget.close_widget();
 			}, 150);
 
 			// once widget has loaded enable event listener on button

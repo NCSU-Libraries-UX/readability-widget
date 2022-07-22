@@ -144,7 +144,7 @@ body.readability-hide-images {
             font-size: 1.25rem;
             font-weight: bold;
             line-height: 1.25;
-            padding: 13px 35px 10px 10px;
+            padding: 10px 35px 10px 10px;
             position: relative;
         }
 
@@ -170,8 +170,7 @@ body.readability-hide-images {
             border: none;
             color: #777777;
             font-family: "UniversLight", "Roboto", "Arial", sans-serif;
-
-            font-size: 1rem;
+            font-size: 0.9rem;
 
             &:hover {
                 text-decoration: underline;
@@ -197,6 +196,7 @@ body.readability-hide-images {
 
             /* Move toggle to the right */
             span.switch-toggle-container {
+                height: 36px;
                 justify-self: end;
                 position: relative;
                 width: 60px;
@@ -246,14 +246,14 @@ body.readability-hide-images {
             span.toggle-switch:before {
                 background-color: white;
                 border-radius: 50%;
-                bottom: 4px;
+                bottom: 6px;
                 content: "";
-                height: 26px;
-                left: 4px;
+                height: 24px;
+                left: 5px;
                 position: absolute;
                 transition: 0s;
                 -webkit-transition: 0s;
-                width: 26px;
+                width: 24px;
             }
             input:checked+.toggle-switch {
                 background-color: #2196F3;
@@ -270,14 +270,15 @@ body.readability-hide-images {
                 box-shadow: 0 0 1px #2196F3;
             }
             input:checked+.toggle-switch:before {
-                -webkit-transform: translateX(26px);
-                -ms-transform: translateX(26px);
-                transform: translateX(26px);
+                -webkit-transform: translateX(24px);
+                -ms-transform: translateX(24px);
+                transform: translateX(24px);
             }
         }
         p {
+            font-size: 0.9rem;
+            margin: 0px 0px 10px 0px;
 
-            font-size: 1rem;
             a {
                 color: #cc0000;
                 text-decoration: none;
