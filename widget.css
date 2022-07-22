@@ -9,8 +9,11 @@
   src: url("./fonts/OpenDyslexic-Regular.otf") format("opentype"), url("./fonts/OpenDyslexic-Bold.otf") format("opentype"); }
 body.open-dyslexic {
   font-family: "Open Dyslexic"; }
-  body.open-dyslexic * {
+  body.open-dyslexic *:not(i) {
     font-family: "Open Dyslexic" !important; }
+
+body.readability-hide-images img {
+  opacity: 0 !important; }
 
 #readability-warm-overlay {
   top: -10% !important;
@@ -29,18 +32,18 @@ body.open-dyslexic {
   mix-blend-mode: multiply !important;
   background: rgba(245, 229, 209, 0.7) !important; }
 
-a.readability-highlighted-link {
+.readability-highlighted-link {
   border-bottom: 2px solid black !important;
   background: #FAC800 !important;
   color: black !important;
   text-decoration: none !important; }
-  a.readability-highlighted-link * {
+  .readability-highlighted-link * {
     background: #FAC800 !important;
     color: black !important;
     text-decoration: none !important; }
 
-a.readability-highlighted-link:hover {
-  border-bottom: none; }
+.readability-highlighted-link:hover {
+  border-bottom: none !important; }
 
 #readability-widget {
   position: fixed;
@@ -48,6 +51,12 @@ a.readability-highlighted-link:hover {
   width: 350px;
   z-index: 999;
   transition: bottom .25s; }
+  #readability-widget #widget-toggle svg {
+    fill: #ffffff;
+    width: 20px;
+    margin: 0px 6px 0px 0px;
+    position: relative;
+    top: 4px; }
   #readability-widget.open #widget-toggle button::after {
     content: "";
     width: 0;
@@ -64,22 +73,22 @@ a.readability-highlighted-link:hover {
     width: 0;
     height: 0;
     position: absolute;
-    top: 18px;
+    top: 24px;
     right: 9px;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 10px solid white;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid white;
     content: ""; }
-  #readability-widget.hidden {
-    right: -112px; }
-    #readability-widget.hidden #widget-toggle button {
+  #readability-widget.widget-hidden {
+    right: -148px; }
+    #readability-widget.widget-hidden #widget-toggle button {
       background-color: #777777;
       transition: right .25s;
       right: 0px; }
-    #readability-widget.hidden #widget-toggle button:hover {
+    #readability-widget.widget-hidden #widget-toggle button:hover {
       background-color: #CC0000;
       position: relative;
-      right: 112px; }
+      right: 150px; }
   #readability-widget #widget-toggle {
     text-align: right; }
     #readability-widget #widget-toggle button {
@@ -192,5 +201,9 @@ a.readability-highlighted-link:hover {
         text-decoration: none; }
       #readability-widget #widget-content p a:hover {
         text-decoration: underline; }
+
+/* Custom Styles for NCSU Libraries website */
+body.readability-hide-images div.slick-wrapper {
+  opacity: 0 !important; }
 
 /*# sourceMappingURL=widget.css.map */

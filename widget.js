@@ -5,7 +5,7 @@ var ra_widget = {
 	// load widget to page
 	init:function(){
 
-		fetch('https://libweb-d4.lib.ncsu.edu/development/readability-widget/widget.html').then(function (response) {
+		fetch('https://libweb-d7.lib.ncsu.edu/development/readability-widget/widget.html').then(function (response) {
 			// successful API call
 			return response.text();
 		}).then(function (html) {
@@ -16,7 +16,7 @@ var ra_widget = {
 
 			// set bottom of article to - height of the widget content
 			var timer = setTimeout(function(){
-				// ra_widget.close_widget();
+				 ra_widget.close_widget();
 			}, 150);
 
 			// once widget has loaded enable event listener on button
@@ -68,7 +68,7 @@ var ra_widget = {
 	show_widget : function(){
 		widget_element = document.getElementById('readability-widget');
 		widget_element.classList.remove('closed');
-		widget_element.classList.remove('hidden');
+		widget_element.classList.remove('widget-hidden');
 		widget_element.classList.add('open');
 		// set bottom of article to 0px
 		widget_element.style.bottom = "0px";
@@ -121,7 +121,7 @@ var ra_widget = {
 		ra_widget.close_widget();
 		// and hide it too
 		widget_element = document.getElementById('readability-widget');
-		widget_element.classList.add("hidden");
+		widget_element.classList.add("widget-hidden");
 
 		// set widget localStorge 
 		ra_widget.set_widget_hidden_local_storage('true');
@@ -217,7 +217,7 @@ var ra_widget = {
 	},
 
 	hide_show_all_images : function(value){
-		// get all images
+		/** get all images
 		all_images = document.querySelectorAll("img");
 		if(value == 'true'){
 			for(i=0;i<all_images.length;i++){
@@ -227,13 +227,19 @@ var ra_widget = {
 			for(i=0;i<all_images.length;i++){
 				all_images[i].style.display = '';
 			}
+		}*/
+		if(value == 'true') {
+			document.body.classList.add('readability-hide-images');
+		} else {
+			document.body.classList.remove('readability-hide-images');
 		}
 		localStorage.hide_all_images = value;
 	},
 
 	hide_show_highlighted_links : function(value){
 		// get all <a> tags
-		all_links = document.querySelectorAll("a");
+		all_links = document.querySelectorAll("a, button");
+		console.log(all_links);
 		if(value == 'true'){
 			for(i=0;i<all_links.length;i++){
 				all_links[i].classList.add("readability-highlighted-link");
