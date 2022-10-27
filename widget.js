@@ -44,6 +44,12 @@ var ra_widget = {
 				ra_widget.check_localstorage_toggles();
 			});
 
+			// check if analytics exists, if so set global var
+			ra_widget.check_for_analytics();
+			
+			// add analytics to html links
+			ra_widget.add_link_analytics();
+
 			
 
 		}).catch(function (err) {
@@ -74,6 +80,11 @@ var ra_widget = {
 		widget_element.style.bottom = "0px";
 
 		ra_widget.set_widget_hidden_local_storage('false');
+
+		// add analytics
+		if(ra_widget.analytics_exists){
+			ga('send', 'event', 'Readability Widget', 'widget toggle', 'open');
+		}
 	},
 	
 	// hide widget (still revealing widget toggle button)
@@ -85,8 +96,13 @@ var ra_widget = {
 
 		// set bottom of article to - height of the widget content
 		widget_content = document.getElementById("widget-content");
-		console.log(widget_content.offsetHeight);
+
 		widget_element.style.bottom = -(widget_content.offsetHeight) + "px";
+
+		// add analytics
+		if(ra_widget.analytics_exists){
+			ga('send', 'event', 'Readability Widget', 'widget toggle', 'closed');
+		}
 	},
 
 	// if click happens outside popover, close it
@@ -103,7 +119,7 @@ var ra_widget = {
 
 	close_on_escape : function() {
 		const escape_key_listener = event => {
-			//console.log(event);
+
 			if(event.keyCode == 27) {
 				ra_widget.close_widget();
 			}
@@ -125,6 +141,11 @@ var ra_widget = {
 
 		// set widget localStorge 
 		ra_widget.set_widget_hidden_local_storage('true');
+
+		// add analytics_exists
+		if(ra_widget.analytics_exists){
+			ga('send', 'event', 'Readability Widget', 'widget toggle', 'hidden');
+		}
 	},
 
 	check_localstorage_toggles : function(){
@@ -198,20 +219,38 @@ var ra_widget = {
 				// set local storage
 				localStorage.open_dyslexic_font = 'true';
 
+				// add analytics
+				if(ra_widget.analytics_exists){
+					ga('send', 'event', 'Readability Widget', 'highlight dyslexic font', 'on');
+				}
+
 			} else {
 				// make font regular again
 				document.body.classList.remove("open-dyslexic");
 
 				// set local storage
 				localStorage.open_dyslexic_font = 'false';
+
+				// add analytics
+				if(ra_widget.analytics_exists){
+					ga('send', 'event', 'Readability Widget', 'highlight dyslexic font', 'off');
+				}
 			}
 		})
 
 		document.getElementById("highlight-links-toggle").addEventListener('click', function(e){
 			if(e.target.checked){
 				ra_widget.hide_show_highlighted_links('true');
+				// add analytics
+				if(ra_widget.analytics_exists){
+					ga('send', 'event', 'Readability Widget', 'highlight links', 'on');
+				}
 			}else{
 				ra_widget.hide_show_highlighted_links('false');
+				// add analytics
+				if(ra_widget.analytics_exists){
+					ga('send', 'event', 'Readability Widget', 'highlight links', 'off');
+				}
 			}		
 		})
 	},
@@ -230,8 +269,16 @@ var ra_widget = {
 		}*/
 		if(value == 'true') {
 			document.body.classList.add('readability-hide-images');
+			// add analytics
+			if(ra_widget.analytics_exists){
+				ga('send', 'event', 'Readability Widget', 'hide images', 'on');
+			}
 		} else {
 			document.body.classList.remove('readability-hide-images');
+			// add analytics
+			if(ra_widget.analytics_exists){
+				ga('send', 'event', 'Readability Widget', 'hide images', 'off');
+			}
 		}
 		localStorage.hide_all_images = value;
 	},
@@ -239,18 +286,59 @@ var ra_widget = {
 	hide_show_highlighted_links : function(value){
 		// get all <a> tags
 		all_links = document.querySelectorAll("a, button");
-		console.log(all_links);
+
 		if(value == 'true'){
 			for(i=0;i<all_links.length;i++){
 				all_links[i].classList.add("readability-highlighted-link");
+			}
+			// add analytics
+			if(ra_widget.analytics_exists){
+				ga('send', 'event', 'Readability Widget', 'highlight links', 'on');
 			}
 		}else if(value == 'false'){
 			for(i=0;i<all_links.length;i++){
 				all_links[i].classList.remove("readability-highlighted-link");
 			}
+			// add analytics
+			if(ra_widget.analytics_exists){
+				ga('send', 'event', 'Readability Widget', 'highlight links', 'off');
+			}
 		}
 
 		localStorage.highlight_links = value;
+	},
+	// check to see if analytics is available
+	check_for_analytics(){
+		ra_widget.analytics_exists = false;
+		// is analytics available
+		if(window.ga && ga.create) {
+	    	// is the analytics our account?
+			var tracking_id = null;
+			if (ga && (ga.getByName instanceof Function) && ga.getByName('t0') && (ga.getByName('t0').get instanceof Function) && ga.getByName('t0').get('trackingId')) {
+				tracking_id = ga.getByName('t0').get('trackingId');
+			}
+			// is ga account the libraries account
+	    	if(tracking_id == 'UA-17138302-1'){
+				ra_widget.analytics_exists = true;
+			}
+		}
+	},
+	// add analytics to text links
+	add_link_analytics : function(){
+		document.getElementById('widget-feedback-link').addEventListener('click', function(e){
+			// add analytics
+			if(ra_widget.analytics_exists){
+				ga('send', 'event', 'Readability Widget', 'widget feedback link click');
+			}
+		})
+
+		document.getElementById('widget-accessibility-resources-link').addEventListener('click', function(e){
+			// add analytics
+			if(ra_widget.analytics_exists){
+				ga('send', 'event', 'Readability Widget', 'widget accessibility resources link click');
+			}
+		})
+
 	}
 }
 

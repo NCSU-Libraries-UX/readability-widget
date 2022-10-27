@@ -221,6 +221,8 @@ body.readability-hide-images {
                 cursor: pointer;
                 display: grid;
                 grid-template-columns: 1fr 1fr;
+                grid-template-rows: 100%;
+                height: 100%;
                 left: 0;
                 position: absolute;
                 right: 0;
@@ -231,15 +233,23 @@ body.readability-hide-images {
                 .label-on{
                     align-self: center;
                     font-size: 0.75rem;
-                    text-align: center;
-                    z-index: 0;
                     opacity: 0;
+                    // padding-top: 7px;
+                    // position: relative;
+                    text-align: center;
+                    -webkit-align-self: center;
+                    // top: 7px;
+                    z-index: 0;
                 }
                 .label-off{
                     align-self: center;
+                    -webkit-align-self: center;
                     font-size: 0.75rem;
-                    text-align: center;
                     padding-right: 4px;
+                    // padding-top: 7px;
+                    // position: relative;
+                    text-align: center;
+                    // top: 7px;
                     z-index: 0;
                 }
             }

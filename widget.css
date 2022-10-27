@@ -154,6 +154,8 @@ body.readability-hide-images img {
         cursor: pointer;
         display: grid;
         grid-template-columns: 1fr 1fr;
+        grid-template-rows: 100%;
+        height: 100%;
         left: 0;
         position: absolute;
         right: 0;
@@ -163,14 +165,16 @@ body.readability-hide-images img {
         #readability-widget #widget-content label.readability-switch span.toggle-switch .label-on {
           align-self: center;
           font-size: 0.75rem;
+          opacity: 0;
           text-align: center;
-          z-index: 0;
-          opacity: 0; }
+          -webkit-align-self: center;
+          z-index: 0; }
         #readability-widget #widget-content label.readability-switch span.toggle-switch .label-off {
           align-self: center;
+          -webkit-align-self: center;
           font-size: 0.75rem;
-          text-align: center;
           padding-right: 4px;
+          text-align: center;
           z-index: 0; }
       #readability-widget #widget-content label.readability-switch span.toggle-switch:before {
         background-color: white;
