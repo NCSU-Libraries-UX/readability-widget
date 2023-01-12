@@ -4,20 +4,20 @@
 var ra_widget = {
 	// load widget to page
 	init:function(){
-
 		fetch('https://cdn.lib.ncsu.edu/readability-widget/widget.html').then(function (response) {
 			// successful API call
 			return response.text();
 		}).then(function (html) {
+			
 			// HTML from response as text string
 			// append to the end of the body element
 			var b = document.body;
-			b.innerHTML += html;
-
+			b.insertAdjacentHTML("beforeend",html);
+			
 			// set bottom of article to - height of the widget content
-			var timer = setTimeout(function(){
-				 ra_widget.close_widget();
-			}, 150);
+			//var timer = setTimeout(function(){
+				 //ra_widget.close_widget();
+			//}, 150);
 
 			// once widget has loaded enable event listener on button
 			ra_widget.toggle_widget();
@@ -33,16 +33,13 @@ var ra_widget = {
 
 			// hide widget when hide button pressed
 			ra_widget.set_hidden_event_listener();
-
-			// check localstorage toggles
-			ra_widget.check_localstorage_toggles();
 			
-			// fire additional stuff after page has fully loaded
-			window.addEventListener('load', function(e) {
-				ra_widget.close_widget();
-				// check localstorage toggles
-				ra_widget.check_localstorage_toggles();
-			});
+			// wait until page has fully loaded before firing a few things
+			if(document.readyState == 'complete'){
+				ra_widget.after_page_load();
+			}else{
+				window.addEventListener("load",ra_widget.after_page_load);
+			}
 
 			// check if analytics exists, if so set global var
 			ra_widget.check_for_analytics();
@@ -50,13 +47,17 @@ var ra_widget = {
 			// add analytics to html links
 			ra_widget.add_link_analytics();
 
-			
-
 		}).catch(function (err) {
 			// something went wrong
 			console.warn("Failed to load widget.html", err);
 		});
 
+	},
+
+	after_page_load : function(e){
+		ra_widget.close_widget();
+		// check localstorage toggles
+		ra_widget.check_localstorage_toggles();
 	},
 
 	toggle_widget : function(e){
@@ -100,9 +101,10 @@ var ra_widget = {
 		widget_element.style.bottom = -(widget_content.offsetHeight) + "px";
 
 		// add analytics
-		if(ra_widget.analytics_exists){
-			ga('send', 'event', 'Readability Widget', 'widget toggle', 'closed');
-		}
+		// commented out because this fires each page load
+		// if(ra_widget.analytics_exists){
+		// 	ga('send', 'event', 'Readability Widget', 'widget toggle', 'closed');
+		// }
 	},
 
 	// if click happens outside popover, close it
@@ -196,10 +198,20 @@ var ra_widget = {
 				warm_overlay_el.id = "readability-warm-overlay";
 				document.body.appendChild(warm_overlay_el);
 				localStorage.warm_background = 'true';
+
+				// add analytics
+				if(ra_widget.analytics_exists){
+					ga('send', 'event', 'Readability Widget', 'warm background', 'on');
+				}
 			}else{
 				//document.body.style.backgroundColor = "";
 				document.getElementById("readability-warm-overlay").remove();
 				localStorage.warm_background = 'false';
+
+				// add analytics
+				if(ra_widget.analytics_exists){
+					ga('send', 'event', 'Readability Widget', 'warm background', 'off');
+				}
 			}
 		})
 
