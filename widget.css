@@ -212,4 +212,8 @@ body.readability-hide-images img {
 body.readability-hide-images div.slick-wrapper {
   opacity: 0 !important; }
 
+@media print {
+  #readability-widget {
+    display: none; } }
+
 /*# sourceMappingURL=widget.css.map */

@@ -307,3 +307,9 @@ body.readability-hide-images {
         opacity:0 !important;
     }
 }
+
+@media print {
+    #readability-widget{
+        display: none;
+    }
+}

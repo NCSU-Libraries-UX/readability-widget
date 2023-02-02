@@ -12,7 +12,7 @@ var ra_widget = {
 			// HTML from response as text string
 			// append to the end of the body element
 			var b = document.body;
-			b.innerHTML += html;
+			b.insertAdjacentHTML("beforeend",html);
 
 			// set bottom of article to - height of the widget content
 			var timer = setTimeout(function(){
