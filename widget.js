@@ -59,6 +59,26 @@ var ra_widget = {
 
 	},
 
+	disable_internal_tabbing: function(){
+		all_internal_links = document.querySelectorAll('#widget-content a, #widget-content input, #widget-content button');
+		//console.log(all_internal_links);
+		all_internal_links.forEach(function(currentValue){
+			currentValue.tabIndex = -1;
+			console.log(currentValue);
+		});
+
+	},
+
+	enable_internal_tabbing: function() {
+		all_internal_links = document.querySelectorAll('#widget-content a, #widget-content input, #widget-content button');
+		//console.log(all_internal_links);
+		all_internal_links.forEach(function(currentValue){
+			currentValue.tabIndex = 0;
+			console.log(currentValue);
+		});
+
+	},
+
 	toggle_widget : function(e){
 		// add event listener to widget button (toggle on|off)
 		document.querySelector("#widget-toggle-button").addEventListener("click", function(e){
@@ -81,6 +101,8 @@ var ra_widget = {
 
 		ra_widget.set_widget_hidden_local_storage('false');
 
+		ra_widget.enable_internal_tabbing();
+
 		// add analytics
 		if(ra_widget.analytics_exists){
 			ga('send', 'event', 'Readability Widget', 'widget toggle', 'open');
@@ -98,6 +120,8 @@ var ra_widget = {
 		widget_content = document.getElementById("widget-content");
 
 		widget_element.style.bottom = -(widget_content.offsetHeight) + "px";
+
+		ra_widget.disable_internal_tabbing();
 
 		// add analytics
 		if(ra_widget.analytics_exists){
@@ -329,13 +353,6 @@ var ra_widget = {
 			// add analytics
 			if(ra_widget.analytics_exists){
 				ga('send', 'event', 'Readability Widget', 'widget feedback link click');
-			}
-		})
-
-		document.getElementById('widget-accessibility-resources-link').addEventListener('click', function(e){
-			// add analytics
-			if(ra_widget.analytics_exists){
-				ga('send', 'event', 'Readability Widget', 'widget accessibility resources link click');
 			}
 		})
 
