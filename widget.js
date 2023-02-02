@@ -81,6 +81,8 @@ var ra_widget = {
 
 		ra_widget.set_widget_hidden_local_storage('false');
 
+		ra_widget.enable_internal_tabbing();
+
 		// add analytics
 		if(ra_widget.analytics_exists){
 			ga('send', 'event', 'Readability Widget', 'widget toggle', 'open');
@@ -99,6 +101,8 @@ var ra_widget = {
 
 		widget_element.style.bottom = -(widget_content.offsetHeight) + "px";
 
+		ra_widget.disable_internal_tabbing();
+
 		// add analytics
 		if(ra_widget.analytics_exists){
 			ga('send', 'event', 'Readability Widget', 'widget toggle', 'closed');
@@ -111,7 +115,7 @@ var ra_widget = {
 	disable_internal_tabbing: function() {
 		all_internal_links = document.querySelectorAll('#widget-content a, #widget-content input, #widget-content button');
   
-	  all_internal_links.forEach(function (currentValue) {
+	  	all_internal_links.forEach(function (currentValue) {
 		  currentValue.tabIndex = -1;
 		});
 	},
@@ -123,7 +127,7 @@ var ra_widget = {
 		all_internal_links = document.querySelectorAll('#widget-content a, #widget-content input, #widget-content button');
 
 		all_internal_links.forEach(function (currentValue) {
-		currentValue.tabIndex = 0;
+			currentValue.tabIndex = 0;
 		});
 	},
 
