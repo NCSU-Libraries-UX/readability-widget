@@ -105,7 +105,7 @@ var ra_widget = {
 
 		// add analytics
 		if(ra_widget.analytics_exists){
-			ga('send', 'event', 'Readability Widget', 'widget toggle', 'closed');
+			//ga('send', 'event', 'Readability Widget', 'widget toggle', 'closed');
 		}
 	},
 
