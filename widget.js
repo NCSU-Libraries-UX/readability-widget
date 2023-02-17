@@ -14,11 +14,6 @@ var ra_widget = {
 			var b = document.body;
 			b.insertAdjacentHTML("beforeend",html);
 
-			// set bottom of article to - height of the widget content
-			var timer = setTimeout(function(){
-				 ra_widget.close_widget();
-			}, 150);
-
 			// once widget has loaded enable event listener on button
 			ra_widget.toggle_widget();
 
@@ -38,19 +33,23 @@ var ra_widget = {
 			ra_widget.check_localstorage_toggles();
 			
 			// fire additional stuff after page has fully loaded
-			window.addEventListener('load', function(e) {
+			if (document.readyState === 'complete') {
 				ra_widget.close_widget();
 				// check localstorage toggles
 				ra_widget.check_localstorage_toggles();
-			});
+			}else{
+				window.addEventListener('load', function(e) {
+					ra_widget.close_widget();
+					// check localstorage toggles
+					ra_widget.check_localstorage_toggles();
+				});
+			}
 
 			// check if analytics exists, if so set global var
 			ra_widget.check_for_analytics();
 			
 			// add analytics to html links
 			ra_widget.add_link_analytics();
-
-			
 
 		}).catch(function (err) {
 			// something went wrong
