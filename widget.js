@@ -38,14 +38,14 @@ var ra_widget = {
 				// check localstorage toggles
 				ra_widget.check_localstorage_toggles();
 				// show Widget
-				document.getElementById('readability-widget').style.display = "block";
+				document.getElementById('readability-widget').style.opacity = 1;
 			}else{
 				window.addEventListener('load', function(e) {
 					ra_widget.close_widget();
 					// check localstorage toggles
 					ra_widget.check_localstorage_toggles();
 					// show Widget
-					document.getElementById('readability-widget').style.display = "block";
+					document.getElementById('readability-widget').style.opacity = 1;
 				});
 			}
 
