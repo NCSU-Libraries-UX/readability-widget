@@ -37,11 +37,15 @@ var ra_widget = {
 				ra_widget.close_widget();
 				// check localstorage toggles
 				ra_widget.check_localstorage_toggles();
+				// show Widget
+				document.getElementById('readability-widget').style.display = "block";
 			}else{
 				window.addEventListener('load', function(e) {
 					ra_widget.close_widget();
 					// check localstorage toggles
 					ra_widget.check_localstorage_toggles();
+					// show Widget
+					document.getElementById('readability-widget').style.display = "block";
 				});
 			}
 

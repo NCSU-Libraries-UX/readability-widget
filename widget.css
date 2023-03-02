@@ -46,6 +46,7 @@ body.readability-hide-images img {
   border-bottom: none !important; }
 
 #readability-widget {
+  display: none;
   position: fixed;
   right: 10px;
   width: 350px;
