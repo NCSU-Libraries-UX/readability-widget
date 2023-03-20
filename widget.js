@@ -3,7 +3,7 @@
 
 var ra_widget = {
 	// load widget to page
-	init:function(){
+	init: function(){
 
 		fetch('https://cdn.lib.ncsu.edu/readability-widget/widget.html').then(function (response) {
 			// successful API call
@@ -31,29 +31,15 @@ var ra_widget = {
 
 			// check localstorage toggles
 			ra_widget.check_localstorage_toggles();
-			
-			// fire additional stuff after page has fully loaded
-			if (document.readyState === 'complete') {
-				ra_widget.close_widget();
-				// check localstorage toggles
-				ra_widget.check_localstorage_toggles();
-				// show Widget
-				document.getElementById('readability-widget').style.opacity = 1;
-			}else{
-				window.addEventListener('load', function(e) {
-					ra_widget.close_widget();
-					// check localstorage toggles
-					ra_widget.check_localstorage_toggles();
-					// show Widget
-					document.getElementById('readability-widget').style.opacity = 1;
-				});
-			}
 
 			// check if analytics exists, if so set global var
 			ra_widget.check_for_analytics();
 			
 			// add analytics to html links
 			ra_widget.add_link_analytics();
+
+			// finally show widget to users
+			ra_widget.show_widget_to_users();
 
 		}).catch(function (err) {
 			// something went wrong
@@ -62,19 +48,33 @@ var ra_widget = {
 
 	},
 
+	show_widget_to_users : function(){
+		// bug where widget content padding was not computed right away. wait for padding to be computed before showing widget
+		const padding_check = setInterval(function(){
+			widget_content = document.getElementById("widget-content");
+			widget_content_padding = window.getComputedStyle(widget_content, null).getPropertyValue('padding-left');
+			if(widget_content_padding != '0px'){
+				clearInterval(padding_check);
+				ra_widget.close_widget();
+				// show widget
+				document.getElementById('readability-widget').style.opacity = 1;
+			}
+		},100);
+	},
+
 	toggle_widget : function(e){
 		// add event listener to widget button (toggle on|off)
 		document.querySelector("#widget-toggle-button").addEventListener("click", function(e){
 			widget_element = document.getElementById('readability-widget');
 			if(widget_element.classList.contains('closed')){
-				ra_widget.show_widget();
+				ra_widget.reveal_widget();
 			}else{
 				ra_widget.close_widget();
 			}
 		});
 	},
 	// reveal widget to user
-	show_widget : function(){
+	reveal_widget : function(){
 		widget_element = document.getElementById('readability-widget');
 		widget_element.classList.remove('closed');
 		widget_element.classList.remove('widget-hidden');

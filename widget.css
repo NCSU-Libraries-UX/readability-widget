@@ -96,7 +96,7 @@ body.readability-hide-images img {
       background: #cc0000;
       border: 0px;
       color: #FFF;
-      font-family: "UniversRoman", "Roboto", "Arial", sans-serif;
+      font-family: "Arial", "Roboto", sans-serif;
       font-size: 1.25rem;
       font-weight: bold;
       line-height: 1.25;
@@ -109,7 +109,7 @@ body.readability-hide-images img {
   #readability-widget #widget-content {
     background: #ffffff;
     border: 1px solid #555;
-    font-family: "UniversLight", "Roboto", "Arial", sans-serif;
+    font-family: "Arial", "Roboto", sans-serif;
     font-size: 1.25rem;
     padding: 20px;
     max-width: 400px;
@@ -118,7 +118,7 @@ body.readability-hide-images img {
       background: none;
       border: none;
       color: #757575;
-      font-family: "UniversLight", "Roboto", "Arial", sans-serif;
+      font-family: "Arial", "Roboto", sans-serif;
       font-size: 0.9rem; }
       #readability-widget #widget-content #hide-widget-button:hover {
         text-decoration: underline; }
