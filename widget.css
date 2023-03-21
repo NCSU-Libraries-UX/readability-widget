@@ -96,7 +96,7 @@ body.readability-hide-images img {
       background: #cc0000;
       border: 0px;
       color: #FFF;
-      font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
+      font-family: UniversRoman, Roboto, Arial,Helvetica Neue,Helvetica,sans-serif;
       font-size: 1.25rem;
       font-weight: bold;
       line-height: 1.25;
@@ -109,8 +109,9 @@ body.readability-hide-images img {
   #readability-widget #widget-content {
     background: #ffffff;
     border: 1px solid #555;
-    font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
+    font-family: UniversLight, Roboto, Arial,Helvetica Neue,Helvetica,sans-serif;
     font-size: 1.25rem;
+    font-weight: 100;
     padding: 20px;
     max-width: 400px;
     /* The switch - the box around the slider */ }
@@ -118,7 +119,8 @@ body.readability-hide-images img {
       background: none;
       border: none;
       color: #757575;
-      font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
+      font-family: UniversLight, Roboto, Arial,Helvetica Neue,Helvetica,sans-serif;
+      font-weight: 100;
       font-size: 0.9rem; }
       #readability-widget #widget-content #hide-widget-button:hover {
         text-decoration: underline; }
