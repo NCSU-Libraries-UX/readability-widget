@@ -225,10 +225,20 @@ var ra_widget = {
 				warm_overlay_el.id = "readability-warm-overlay";
 				document.body.appendChild(warm_overlay_el);
 				localStorage.warm_background = 'true';
+
+				// add analytics
+				if(ra_widget.analytics_exists){
+					ga('send', 'event', 'Readability Widget', 'warm background', 'on');
+				}
 			}else{
 				//document.body.style.backgroundColor = "";
 				document.getElementById("readability-warm-overlay").remove();
 				localStorage.warm_background = 'false';
+
+				// add analytics
+				if(ra_widget.analytics_exists){
+					ga('send', 'event', 'Readability Widget', 'warm background', 'off');
+				}
 			}
 		})
 
