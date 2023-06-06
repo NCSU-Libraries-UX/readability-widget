@@ -2,6 +2,7 @@
 // initiates widget functionality (toggle button, on|off switches)
 
 var ra_widget = {
+
 	// load widget to page
 	init: function(){
 
@@ -31,9 +32,6 @@ var ra_widget = {
 
 			// check localstorage toggles
 			ra_widget.check_localstorage_toggles();
-
-			// check if analytics exists, if so set global var
-			ra_widget.check_for_analytics();
 			
 			// add analytics to html links
 			ra_widget.add_link_analytics();
@@ -87,9 +85,8 @@ var ra_widget = {
 		ra_widget.enable_internal_tabbing();
 
 		// add analytics
-		if(ra_widget.analytics_exists){
-			ga('send', 'event', 'Readability Widget', 'widget toggle', 'open');
-		}
+		var _paq = _paq || [];
+		_paq.push(['trackEvent', 'Readability Widget', 'widget toggle', 'open']);
 	},
 	
 	// hide widget (still revealing widget toggle button)
@@ -105,11 +102,6 @@ var ra_widget = {
 		widget_element.style.bottom = -(widget_content.offsetHeight) + "px";
 
 		ra_widget.disable_internal_tabbing();
-
-		// add analytics
-		if(ra_widget.analytics_exists){
-			//ga('send', 'event', 'Readability Widget', 'widget toggle', 'closed');
-		}
 	},
 
 	/**
@@ -172,9 +164,8 @@ var ra_widget = {
 		ra_widget.set_widget_hidden_local_storage('true');
 
 		// add analytics_exists
-		if(ra_widget.analytics_exists){
-			ga('send', 'event', 'Readability Widget', 'widget toggle', 'hidden');
-		}
+		var _paq = _paq || [];
+		_paq.push(['trackEvent', 'Readability Widget', 'widget toggle', 'hidden']);
 	},
 
 	check_localstorage_toggles : function(){
@@ -227,18 +218,16 @@ var ra_widget = {
 				localStorage.warm_background = 'true';
 
 				// add analytics
-				if(ra_widget.analytics_exists){
-					ga('send', 'event', 'Readability Widget', 'warm background', 'on');
-				}
+				var _paq = _paq || [];
+				_paq.push(['trackEvent', 'Readability Widget', 'warm background', 'on']);
 			}else{
 				//document.body.style.backgroundColor = "";
 				document.getElementById("readability-warm-overlay").remove();
 				localStorage.warm_background = 'false';
 
 				// add analytics
-				if(ra_widget.analytics_exists){
-					ga('send', 'event', 'Readability Widget', 'warm background', 'off');
-				}
+				var _paq = _paq || [];
+				_paq.push(['trackEvent', 'Readability Widget', 'warm background', 'off']);
 			}
 		})
 
@@ -259,9 +248,8 @@ var ra_widget = {
 				localStorage.open_dyslexic_font = 'true';
 
 				// add analytics
-				if(ra_widget.analytics_exists){
-					ga('send', 'event', 'Readability Widget', 'highlight dyslexic font', 'on');
-				}
+				var _paq = _paq || [];
+				_paq.push(['trackEvent', 'Readability Widget', 'highlight dyslexic font', 'on']);
 
 			} else {
 				// make font regular again
@@ -271,9 +259,8 @@ var ra_widget = {
 				localStorage.open_dyslexic_font = 'false';
 
 				// add analytics
-				if(ra_widget.analytics_exists){
-					ga('send', 'event', 'Readability Widget', 'highlight dyslexic font', 'off');
-				}
+				var _paq = _paq || [];
+				_paq.push(['trackEvent', 'Readability Widget', 'highlight dyslexic font', 'off']);
 			}
 		})
 
@@ -281,15 +268,13 @@ var ra_widget = {
 			if(e.target.checked){
 				ra_widget.hide_show_highlighted_links('true');
 				// add analytics
-				if(ra_widget.analytics_exists){
-					ga('send', 'event', 'Readability Widget', 'highlight links', 'on');
-				}
+				var _paq = _paq || [];
+				_paq.push(['trackEvent', 'Readability Widget', 'highlight links', 'on']);
 			}else{
 				ra_widget.hide_show_highlighted_links('false');
 				// add analytics
-				if(ra_widget.analytics_exists){
-					ga('send', 'event', 'Readability Widget', 'highlight links', 'off');
-				}
+				var _paq = _paq || [];
+				_paq.push(['trackEvent', 'Readability Widget', 'highlight links', 'off']);
 			}		
 		})
 	},
@@ -309,15 +294,13 @@ var ra_widget = {
 		if(value == 'true') {
 			document.body.classList.add('readability-hide-images');
 			// add analytics
-			if(ra_widget.analytics_exists){
-				ga('send', 'event', 'Readability Widget', 'hide images', 'on');
-			}
+			var _paq = _paq || [];
+			_paq.push(['trackEvent', 'Readability Widget', 'hide images', 'on']);
 		} else {
 			document.body.classList.remove('readability-hide-images');
 			// add analytics
-			if(ra_widget.analytics_exists){
-				ga('send', 'event', 'Readability Widget', 'hide images', 'off');
-			}
+			var _paq = _paq || [];
+			_paq.push(['trackEvent', 'Readability Widget', 'hide images', 'off']);
 		}
 		localStorage.hide_all_images = value;
 	},
@@ -331,44 +314,25 @@ var ra_widget = {
 				all_links[i].classList.add("readability-highlighted-link");
 			}
 			// add analytics
-			if(ra_widget.analytics_exists){
-				ga('send', 'event', 'Readability Widget', 'highlight links', 'on');
-			}
+			var _paq = _paq || [];
+			_paq.push(['trackEvent', 'Readability Widget', 'highlight links', 'on']);
 		}else if(value == 'false'){
 			for(i=0;i<all_links.length;i++){
 				all_links[i].classList.remove("readability-highlighted-link");
 			}
 			// add analytics
-			if(ra_widget.analytics_exists){
-				ga('send', 'event', 'Readability Widget', 'highlight links', 'off');
-			}
+			var _paq = _paq || [];
+			_paq.push(['trackEvent', 'Readability Widget', 'highlight links', 'off']);
 		}
 
 		localStorage.highlight_links = value;
-	},
-	// check to see if analytics is available
-	check_for_analytics(){
-		ra_widget.analytics_exists = false;
-		// is analytics available
-		if(window.ga && ga.create) {
-	    	// is the analytics our account?
-			var tracking_id = null;
-			if (ga && (ga.getByName instanceof Function) && ga.getByName('t0') && (ga.getByName('t0').get instanceof Function) && ga.getByName('t0').get('trackingId')) {
-				tracking_id = ga.getByName('t0').get('trackingId');
-			}
-			// is ga account the libraries account
-	    	if(tracking_id == 'UA-17138302-1'){
-				ra_widget.analytics_exists = true;
-			}
-		}
 	},
 	// add analytics to text links
 	add_link_analytics : function(){
 		document.getElementById('widget-feedback-link').addEventListener('click', function(e){
 			// add analytics
-			if(ra_widget.analytics_exists){
-				ga('send', 'event', 'Readability Widget', 'widget feedback link click');
-			}
+			var _paq = _paq || [];
+			_paq.push(['trackEvent', 'Readability Widget', 'widget feedback link click']);
 		})
 	}
 }
