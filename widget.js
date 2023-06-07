@@ -87,7 +87,6 @@ var ra_widget = {
 
 		// add analytics
 		ra_widget._paq.push(['trackEvent', 'Readability Widget', 'widget toggle', 'open']);
-		console.log(ra_widget._paq);
 	},
 	
 	// hide widget (still revealing widget toggle button)
