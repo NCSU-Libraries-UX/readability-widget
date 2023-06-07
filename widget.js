@@ -5,7 +5,8 @@ var ra_widget = {
 
 	// load widget to page
 	init: function(){
-
+		ra_widget._paq = window._paq || [];
+		
 		fetch('https://cdn.lib.ncsu.edu/readability-widget/widget.html').then(function (response) {
 			// successful API call
 			return response.text();
@@ -85,8 +86,8 @@ var ra_widget = {
 		ra_widget.enable_internal_tabbing();
 
 		// add analytics
-		var _paq = _paq || [];
-		_paq.push(['trackEvent', 'Readability Widget', 'widget toggle', 'open']);
+		ra_widget._paq.push(['trackEvent', 'Readability Widget', 'widget toggle', 'open']);
+		console.log(ra_widget._paq);
 	},
 	
 	// hide widget (still revealing widget toggle button)
@@ -164,8 +165,7 @@ var ra_widget = {
 		ra_widget.set_widget_hidden_local_storage('true');
 
 		// add analytics_exists
-		var _paq = _paq || [];
-		_paq.push(['trackEvent', 'Readability Widget', 'widget toggle', 'hidden']);
+		ra_widget._paq.push(['trackEvent', 'Readability Widget', 'widget toggle', 'hidden']);
 	},
 
 	check_localstorage_toggles : function(){
@@ -218,16 +218,14 @@ var ra_widget = {
 				localStorage.warm_background = 'true';
 
 				// add analytics
-				var _paq = _paq || [];
-				_paq.push(['trackEvent', 'Readability Widget', 'warm background', 'on']);
+				ra_widget._paq.push(['trackEvent', 'Readability Widget', 'warm background', 'on']);
 			}else{
 				//document.body.style.backgroundColor = "";
 				document.getElementById("readability-warm-overlay").remove();
 				localStorage.warm_background = 'false';
 
 				// add analytics
-				var _paq = _paq || [];
-				_paq.push(['trackEvent', 'Readability Widget', 'warm background', 'off']);
+				ra_widget._paq.push(['trackEvent', 'Readability Widget', 'warm background', 'off']);
 			}
 		})
 
@@ -248,8 +246,7 @@ var ra_widget = {
 				localStorage.open_dyslexic_font = 'true';
 
 				// add analytics
-				var _paq = _paq || [];
-				_paq.push(['trackEvent', 'Readability Widget', 'highlight dyslexic font', 'on']);
+				ra_widget._paq.push(['trackEvent', 'Readability Widget', 'highlight dyslexic font', 'on']);
 
 			} else {
 				// make font regular again
@@ -259,8 +256,7 @@ var ra_widget = {
 				localStorage.open_dyslexic_font = 'false';
 
 				// add analytics
-				var _paq = _paq || [];
-				_paq.push(['trackEvent', 'Readability Widget', 'highlight dyslexic font', 'off']);
+				ra_widget._paq.push(['trackEvent', 'Readability Widget', 'highlight dyslexic font', 'off']);
 			}
 		})
 
@@ -268,13 +264,11 @@ var ra_widget = {
 			if(e.target.checked){
 				ra_widget.hide_show_highlighted_links('true');
 				// add analytics
-				var _paq = _paq || [];
-				_paq.push(['trackEvent', 'Readability Widget', 'highlight links', 'on']);
+				ra_widget._paq.push(['trackEvent', 'Readability Widget', 'highlight links', 'on']);
 			}else{
 				ra_widget.hide_show_highlighted_links('false');
 				// add analytics
-				var _paq = _paq || [];
-				_paq.push(['trackEvent', 'Readability Widget', 'highlight links', 'off']);
+				ra_widget._paq.push(['trackEvent', 'Readability Widget', 'highlight links', 'off']);
 			}		
 		})
 	},
@@ -294,13 +288,11 @@ var ra_widget = {
 		if(value == 'true') {
 			document.body.classList.add('readability-hide-images');
 			// add analytics
-			var _paq = _paq || [];
-			_paq.push(['trackEvent', 'Readability Widget', 'hide images', 'on']);
+			ra_widget._paq.push(['trackEvent', 'Readability Widget', 'hide images', 'on']);
 		} else {
 			document.body.classList.remove('readability-hide-images');
 			// add analytics
-			var _paq = _paq || [];
-			_paq.push(['trackEvent', 'Readability Widget', 'hide images', 'off']);
+			ra_widget._paq.push(['trackEvent', 'Readability Widget', 'hide images', 'off']);
 		}
 		localStorage.hide_all_images = value;
 	},
@@ -314,15 +306,13 @@ var ra_widget = {
 				all_links[i].classList.add("readability-highlighted-link");
 			}
 			// add analytics
-			var _paq = _paq || [];
-			_paq.push(['trackEvent', 'Readability Widget', 'highlight links', 'on']);
+			ra_widget._paq.push(['trackEvent', 'Readability Widget', 'highlight links', 'on']);
 		}else if(value == 'false'){
 			for(i=0;i<all_links.length;i++){
 				all_links[i].classList.remove("readability-highlighted-link");
 			}
 			// add analytics
-			var _paq = _paq || [];
-			_paq.push(['trackEvent', 'Readability Widget', 'highlight links', 'off']);
+			ra_widget._paq.push(['trackEvent', 'Readability Widget', 'highlight links', 'off']);
 		}
 
 		localStorage.highlight_links = value;
@@ -331,8 +321,7 @@ var ra_widget = {
 	add_link_analytics : function(){
 		document.getElementById('widget-feedback-link').addEventListener('click', function(e){
 			// add analytics
-			var _paq = _paq || [];
-			_paq.push(['trackEvent', 'Readability Widget', 'widget feedback link click']);
+			ra_widget._paq.push(['trackEvent', 'Readability Widget', 'widget feedback link click']);
 		})
 	}
 }
