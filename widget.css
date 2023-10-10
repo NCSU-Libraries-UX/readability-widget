@@ -12,6 +12,8 @@ body.open-dyslexic {
   body.open-dyslexic *:not(i) {
     font-family: "Open Dyslexic" !important; }
 
+body.readability-hide-images * {
+  background-image: none !important; }
 body.readability-hide-images img {
   opacity: 0 !important; }
 

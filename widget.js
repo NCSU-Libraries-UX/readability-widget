@@ -8,6 +8,7 @@ var ra_widget = {
 		ra_widget._paq = window._paq || [];
 		
 		fetch('https://cdn.lib.ncsu.edu/readability-widget/widget.html').then(function (response) {
+		// fetch('https://libweb-d3.lib.ncsu.edu/development/readability-widget/widget.html').then(function (response) {
 			// successful API call
 			return response.text();
 		}).then(function (html) {

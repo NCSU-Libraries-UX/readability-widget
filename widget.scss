@@ -20,6 +20,9 @@ body.open-dyslexic{
 }
 
 body.readability-hide-images {
+    *{
+        background-image: none !important;
+    }
     img {
         // display:none !important;
         opacity: 0 !important;
