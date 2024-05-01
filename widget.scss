@@ -29,6 +29,7 @@ body.readability-hide-images {
     }
 }
 
+
 #readability-warm-overlay {
     top: -10% !important;
     margin: 0 !important;
@@ -47,20 +48,30 @@ body.readability-hide-images {
     background: rgba(245, 229, 209, 0.7) !important;
 }
 
-.readability-highlighted-link {
-    border-bottom: 2px solid black !important;
-    background: #FAC800 !important;
-    color: black !important;
-    text-decoration: none !important;
-
-    *{
+body.readability-highlight-links-on {
+    a,button{
         background: #FAC800 !important;
         color: black !important;
         text-decoration: none !important;
+        
+        *{
+            background: #FAC800 !important;
+            color: black !important;
+            text-decoration: none !important;
+        }
     }
-}
-.readability-highlighted-link:hover {
-    border-bottom: none !important;
+    a{
+        border-bottom: 2px solid black !important;
+    }
+    button{
+        border: 2px solid black !important;
+    }
+    a:hover{
+        border-bottom: 2px solid rgb(0,0,0,0) !important;
+    }
+    button:hover{
+        border: 2px solid rgb(0,0,0,0) !important;
+    }
 }
 
 #readability-widget {
@@ -143,9 +154,8 @@ body.readability-hide-images {
             background: #cc0000;
             border: 0px;
             color: #FFF;
-            font-family: UniversRoman, Roboto, Arial,Helvetica Neue,Helvetica,sans-serif;
+            font-family: "RobotoBold",Arial,Helvetica Neue,Helvetica,sans-serif;
             font-size: 1.25rem;
-            font-weight: bold;
             line-height: 1.25;
             padding: 10px 35px 10px 10px;
             position: relative;
@@ -163,7 +173,7 @@ body.readability-hide-images {
     #widget-content {
         background: #ffffff;
         border: 1px solid #555;
-        font-family: UniversLight, Roboto, Arial,Helvetica Neue,Helvetica,sans-serif; 
+        font-family: "RobotoLight",Arial,Helvetica Neue,Helvetica,sans-serif; 
         font-size: 1.25rem;
         font-weight: 100;
         padding: 20px;
@@ -173,7 +183,7 @@ body.readability-hide-images {
             background: none;
             border: none;
             color: #757575;
-            font-family: UniversLight, Roboto, Arial,Helvetica Neue,Helvetica,sans-serif; 
+            font-family: "RobotoLight",Arial,Helvetica Neue,Helvetica,sans-serif; 
             font-weight: 100;
             font-size: 0.9rem;
 

@@ -1,0 +1,3 @@
+Release 1.2.0
+* Roboto font
+* Hide images class is applied to body to capture dynamic content

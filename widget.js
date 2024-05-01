@@ -8,7 +8,7 @@ var ra_widget = {
 		ra_widget._paq = window._paq || [];
 		
 		fetch('https://cdn.lib.ncsu.edu/readability-widget/widget.html').then(function (response) {
-		// fetch('https://libweb-d3.lib.ncsu.edu/development/readability-widget/widget.html').then(function (response) {
+		// fetch('http://local.lib.ncsu.edu/dev/readability-widget/widget.html').then(function (response) {
 			// successful API call
 			return response.text();
 		}).then(function (html) {
@@ -298,19 +298,15 @@ var ra_widget = {
 	},
 
 	hide_show_highlighted_links : function(value){
-		// get all <a> tags
-		all_links = document.querySelectorAll("a, button");
-
+		
 		if(value == 'true'){
-			for(i=0;i<all_links.length;i++){
-				all_links[i].classList.add("readability-highlighted-link");
-			}
+			document.body.classList.add('readability-highlight-links-on');
+
 			// add analytics
 			ra_widget._paq.push(['trackEvent', 'Readability Widget', 'highlight links', 'on']);
 		}else if(value == 'false'){
-			for(i=0;i<all_links.length;i++){
-				all_links[i].classList.remove("readability-highlighted-link");
-			}
+			document.body.classList.remove('readability-highlight-links-on');
+
 			// add analytics
 			ra_widget._paq.push(['trackEvent', 'Readability Widget', 'highlight links', 'off']);
 		}
