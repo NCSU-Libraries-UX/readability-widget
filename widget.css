@@ -233,7 +233,7 @@ body.readability-highlight-links-on button:hover {
   width: 24px;
 }
 #readability-widget #widget-content label.readability-switch input:checked + .toggle-switch {
-  background-color: #2196F3;
+  background-color: #94ccf9;
 }
 #readability-widget #widget-content label.readability-switch input:checked + .toggle-switch .label-off {
   opacity: 0;
@@ -242,7 +242,7 @@ body.readability-highlight-links-on button:hover {
   opacity: 1;
 }
 #readability-widget #widget-content label.readability-switch input:focus + .toggle-switch {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #94ccf9;
 }
 #readability-widget #widget-content label.readability-switch input:checked + .toggle-switch:before {
   -webkit-transform: translateX(24px);
