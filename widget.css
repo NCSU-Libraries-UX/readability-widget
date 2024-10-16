@@ -207,7 +207,7 @@ body.readability-highlight-links-on button:hover {
 #readability-widget #widget-content label.readability-switch span.toggle-switch .label-on {
   align-self: center;
   font-size: 0.75rem;
-  opacity: 0;
+  display: none;
   text-align: center;
   -webkit-align-self: center;
   z-index: 0;
@@ -216,6 +216,7 @@ body.readability-highlight-links-on button:hover {
   align-self: center;
   -webkit-align-self: center;
   font-size: 0.75rem;
+  padding-left: 32px;
   padding-right: 4px;
   text-align: center;
   z-index: 0;
@@ -224,6 +225,7 @@ body.readability-highlight-links-on button:hover {
   background-color: white;
   border-radius: 50%;
   bottom: 6px;
+  color: black;
   content: "";
   height: 24px;
   left: 5px;
@@ -236,10 +238,10 @@ body.readability-highlight-links-on button:hover {
   background-color: #94ccf9;
 }
 #readability-widget #widget-content label.readability-switch input:checked + .toggle-switch .label-off {
-  opacity: 0;
+  display: none;
 }
 #readability-widget #widget-content label.readability-switch input:checked + .toggle-switch .label-on {
-  opacity: 1;
+  display: unset;
 }
 #readability-widget #widget-content label.readability-switch input:focus + .toggle-switch {
   box-shadow: 0 0 1px #94ccf9;
