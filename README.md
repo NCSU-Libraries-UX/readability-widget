@@ -33,5 +33,7 @@ The widget will appear at the bottom right of your site. To expand the widget, t
 
 ## Credits
 
-This widget was created by Erik Olson, Meredith Wynn, and Robin Davis of the User Experience department at NC State University Libraries. We began this work in 2021.
+This widget is covered by an MIT License. While this isn't a legal requirement, we'd also appreciate if you added this line of credit to any user-facing "About the readability widget" page you may create:
+
+"This widget was created by Erik Olson, Meredith Wynn, and Robin Davis of the User Experience department at NC State University Libraries."
 
